@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Source+Serif+Pro:wght@400;600;700&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "type";
+
+.header__logo {
+  height: 26px;
+}
+
+.justify-self-start {
+  justify-self: start;
+}

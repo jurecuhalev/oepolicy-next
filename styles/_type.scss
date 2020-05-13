@@ -1,0 +1,39 @@
+.h1 {
+  @apply font-bold text-blue font-sans;
+
+  font-size: 60px;
+  line-height: 60px;
+}
+
+.h2 {
+  @apply font-bold font-sans text-blue;
+
+  font-size: 36px;
+  line-height: 48px;
+}
+
+.h3 {
+  @apply font-sans text-blue;
+
+  font-size: 36px;
+  line-height: 48px;
+}
+
+.content {
+  @apply font-serif text-blue;
+
+  font-size: 24px;
+  line-height: 36px;
+}
+
+footer {
+  @apply text-lg text-blue font-sans leading-relaxed;
+}
+
+header a,
+footer a,
+.content a {
+  &:hover {
+    @apply underline;
+  }
+}
