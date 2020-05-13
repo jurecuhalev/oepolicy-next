@@ -24,6 +24,14 @@
 
   font-size: 24px;
   line-height: 36px;
+
+  a:hover {
+    @apply underline;
+  }
+
+  p {
+    @apply mb-6;
+  }
 }
 
 footer {
@@ -31,8 +39,7 @@ footer {
 }
 
 header a,
-footer a,
-.content a {
+footer a {
   &:hover {
     @apply underline;
   }
