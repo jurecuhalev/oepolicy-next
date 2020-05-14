@@ -3,6 +3,7 @@
     "next/babel"
   ],
   "plugins": [
+    "import-glob-array",
     [
       "inline-react-svg",
       {

@@ -1,7 +1,3 @@
-const withMDX = require("@next/mdx")({
-  options: {
-    remarkPlugins: [],
-    rehypePlugins: [],
-  },
-});
-module.exports = withMDX();
+const withMdxEnhanced = require("next-mdx-enhanced");
+
+module.exports = withMdxEnhanced()();

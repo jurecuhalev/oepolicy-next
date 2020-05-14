@@ -13,15 +13,13 @@ const ContentBlock: FunctionComponent<Props> = ({
   background,
 }) => (
   <div
-    className={[
-      background === "white" ? "bg-white" : "bg-gray",
-      "py-30",
-      "content",
-    ].join(" ")}
+    className={[background === "white" ? "bg-white" : "bg-gray", ""].join(" ")}
   >
-    {subtitle && <h2 className="h3">{subtitle}</h2>}
-    <h1 className="h2 mb-15">{title}</h1>
-    {children}
+    <div className="container py-30 content">
+      {subtitle && <h2 className="h3">{subtitle}</h2>}
+      <h1 className="h2 mb-15">{title}</h1>
+      {children}
+    </div>
   </div>
 );
 
