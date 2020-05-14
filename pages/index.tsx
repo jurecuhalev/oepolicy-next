@@ -14,12 +14,14 @@ import PartnersPageMd, {
   frontMatter as partnersPage,
 } from "../docs/104-partners.mdx";
 import SharePageMd, { frontMatter as sharePage } from "../docs/105-share.mdx";
+import GraphicOrange from "../components/GraphicOrange";
 
 const HomePage: FunctionComponent = () => (
   <Layout title="Home">
     <ContentBlock {...introPage}>
       <IntroPageMd />
     </ContentBlock>
+    <GraphicOrange />
     <ContentBlock {...registryPage}>
       <RegistryPageMd />
     </ContentBlock>

@@ -31,3 +31,43 @@ button.button {
     @apply bg-pink no-underline shadow-none;
   }
 }
+
+.graphic-orange {
+  position: relative;
+  height: 500px;
+  background: linear-gradient(
+    352deg,
+    #ff9650 21.15%,
+    rgba(255, 150, 80, 0.5) 112.03%
+  );
+
+  .browser1 {
+    position: absolute;
+    top: 75px;
+    left: calc(50% - 97px);
+    width: 432px;
+    z-index: 10;
+  }
+
+  .browser1 svg {
+    position: absolute;
+    top: 75px;
+    left: calc(50% - 85px);
+    height: 148px;
+  }
+
+  .browser2 {
+    position: absolute;
+    top: 178px;
+    width: 372px;
+    left: calc(50% - 300px);
+    z-index: 5;
+  }
+
+  .browser2 svg {
+    position: absolute;
+    top: 70px;
+    left: calc(50% - 110px);
+    width: 218px;
+  }
+}
