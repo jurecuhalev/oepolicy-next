@@ -7,9 +7,10 @@ import LogoLarge from "../assets/svg/logo-large.svg";
 
 type Props = {
   title: string;
+  hero?: any;
 };
 
-const Layout: FunctionComponent<Props> = ({ children, title }) => (
+const Layout: FunctionComponent<Props> = ({ children, title, hero }) => (
   <>
     <Head>
       <title>{title}</title>
@@ -40,12 +41,13 @@ const Layout: FunctionComponent<Props> = ({ children, title }) => (
         </div>
       </div>
     </header>
+    {hero}
     {children}
     <footer className="bg-white py-16">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-2">
-        <div>
-          <ul className=" font-bold">
-            <li className=" mb-4">Open Education Policy Hub</li>
+        <div className="order-2 md:order-1">
+          <ul className="font-bold">
+            <li className="mb-4">Open Education Policy Hub</li>
             <li>
               <Link href="/">
                 <a>Collection &amp; Statistics</a>
@@ -74,7 +76,7 @@ const Layout: FunctionComponent<Props> = ({ children, title }) => (
             </li>
           </ul>
         </div>
-        <div className="">
+        <div className="order-1 md:order-2 mb-12 md:mb-0">
           <LogoLarge className="h-15 mb-12" />
           <Link href="/">
             <a className="font-bold">OE Policy Hub</a>

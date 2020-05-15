@@ -15,9 +15,10 @@ import PartnersPageMd, {
 } from "../docs/104-partners.mdx";
 import SharePageMd, { frontMatter as sharePage } from "../docs/105-share.mdx";
 import GraphicOrange from "../components/GraphicOrange";
+import HeroHome from "../components/HeroHome";
 
 const HomePage: FunctionComponent = () => (
-  <Layout title="Home">
+  <Layout title="Home" hero={<HeroHome />}>
     <ContentBlock {...introPage}>
       <IntroPageMd />
     </ContentBlock>

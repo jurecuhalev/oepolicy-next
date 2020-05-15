@@ -1,22 +1,52 @@
+@font-face {
+  font-family: "Courier Prime Sans";
+  src: url("/fonts/Courier Prime Sans Bold.woff2") format("woff2"),
+    url("/fonts/Courier Prime Sans Bold.woff") format("woff"),
+    url("/fonts/Courier Prime Sans Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Courier Prime Sans";
+  src: url("/fonts/Courier Prime Sans.woff2") format("woff2"),
+    url("/fonts/Courier Prime Sans.woff") format("woff"),
+    url("/fonts/Courier Prime Sans.otf") format("opentype");
+  font-style: normal;
+  font-weight: normal;
+}
+
 .h1 {
   @apply font-bold text-blue font-sans;
 
-  font-size: 60px;
-  line-height: 60px;
+  font-size: 36px;
+  line-height: 1;
+
+  @screen md {
+    font-size: 60px;
+  }
 }
 
 .h2 {
   @apply font-bold font-sans text-blue;
 
-  font-size: 36px;
-  line-height: 48px;
+  font-size: 30px;
+  line-height: 1.33333333333;
+
+  @screen md {
+    font-size: 36px;
+  }
 }
 
 .h3 {
   @apply font-sans text-blue;
 
-  font-size: 36px;
-  line-height: 48px;
+  font-size: 30px;
+  line-height: 1.33333333333;
+
+  @screen md {
+    font-size: 36px;
+  }
 }
 
 .content {
@@ -34,7 +64,7 @@
   }
 
   ul {
-    @apply mb-6;
+    @apply mb-6 list-disc list-outside pl-6;
   }
 }
 

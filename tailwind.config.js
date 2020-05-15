@@ -17,7 +17,7 @@ module.exports = {
       },
       fontFamily: {
         serif: ["Source Serif Pro", ...defaultTheme.fontFamily.serif],
-        sans: ["Courier Prime", ...defaultTheme.fontFamily.serif],
+        sans: ["Courier Prime Sans", ...defaultTheme.fontFamily.serif],
       },
     },
     container: {

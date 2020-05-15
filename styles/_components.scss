@@ -1,0 +1,84 @@
+.header__logo {
+  height: 26px;
+}
+
+.hero-home {
+  background-image: url("/img/hero.jpg");
+  background-size: cover;
+  background-position: center 20%;
+
+  .container {
+    min-height: 316px;
+
+    @screen md {
+      min-height: 492px;
+    }
+  }
+}
+
+.button-group {
+  a {
+    @apply block mb-4;
+
+    @screen lg {
+      @apply inline-block mr-6;
+    }
+  }
+
+  a:last-child {
+    @apply mr-0;
+  }
+}
+
+a.button,
+button.button {
+  @apply bg-blue text-white px-6 py-4 font-sans text-xl;
+
+  border-radius: 5px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    @apply bg-pink no-underline shadow-none;
+  }
+}
+
+.graphic-orange {
+  position: relative;
+  height: 500px;
+  background: linear-gradient(
+    352deg,
+    #ff9650 21.15%,
+    rgba(255, 150, 80, 0.5) 112.03%
+  );
+  overflow: hidden;
+
+  .browser1 {
+    position: absolute;
+    top: 75px;
+    left: calc(50% - 97px);
+    z-index: 10;
+    width: 432px;
+  }
+
+  .browser1 svg {
+    position: absolute;
+    top: 75px;
+    left: calc(50% - 85px);
+    height: 148px;
+  }
+
+  .browser2 {
+    position: absolute;
+    top: 178px;
+    width: 372px;
+    left: calc(50% - 300px);
+    z-index: 5;
+  }
+
+  .browser2 svg {
+    position: absolute;
+    top: 70px;
+    left: calc(50% - 110px);
+    width: 218px;
+  }
+}
