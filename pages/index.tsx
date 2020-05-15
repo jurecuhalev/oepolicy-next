@@ -1,4 +1,3 @@
-import Head from "next/head";
 import React, { FunctionComponent } from "react";
 import Layout from "../components/Layout";
 import ContentBlock from "../components/ContentBlock";

@@ -13,7 +13,7 @@ type Props = {
 const Layout: FunctionComponent<Props> = ({ children, title, hero }) => (
   <>
     <Head>
-      <title>{title}</title>
+      <title>{title} | OE Policy Hub</title>
     </Head>
     <header className="bg-blue text-lg py-4 text-white">
       <div className="container mx-auto flex justify-between flex-col md:flex-row">
