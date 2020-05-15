@@ -10,6 +10,7 @@ import ContentBlock from "../../components/ContentBlock";
 import dynamic from "next/dynamic";
 
 const PieChartPoliciesByFocus = dynamic(
+  // @ts-ignore
   import("../../components/PieChart-ByFocus"),
   {
     ssr: false,
@@ -30,7 +31,6 @@ const ExplorePage: FunctionComponent = () => {
       <ContentBlock {...introPage}>
         <IntroPageMd />
       </ContentBlock>
-
       {!data ? (
         <p>Loading data ...</p>
       ) : (
