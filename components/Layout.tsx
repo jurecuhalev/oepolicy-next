@@ -15,8 +15,8 @@ const Layout: FunctionComponent<Props> = ({ children, title }) => (
       <title>{title}</title>
     </Head>
     <header className="bg-blue text-lg py-4 text-white">
-      <div className="container mx-auto flex justify-between">
-        <div className="flex-shrink self-start">
+      <div className="container mx-auto flex justify-between flex-col md:flex-row">
+        <div className="flex-grow md:flex-shrink self-start mb-6 md:mb-0">
           <Link href="/">
             <a className="hover:no-underline text-white hover:text-orange">
               <LogoWhite
@@ -26,13 +26,13 @@ const Layout: FunctionComponent<Props> = ({ children, title }) => (
             </a>
           </Link>
         </div>
-        <div className="flex justify-end">
-          <div className="flex-shrink">
+        <div className="flex justify-end flex-col md:flex-row">
+          <div className="flex-shrink mb-2 md:mb-0">
             <Link href="/">
               <a>Collection &amp; Statistics</a>
             </Link>
           </div>
-          <div className="flex-shrink ml-8">
+          <div className="flex-shrink md:ml-8">
             <Link href="/">
               <a>Tools &amp; Resources</a>
             </Link>

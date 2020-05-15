@@ -12,7 +12,11 @@
 
 .button-group {
   a {
-    @apply mr-6;
+    @apply block mb-4;
+
+    @screen lg {
+      @apply inline-block mr-6;
+    }
   }
 
   a:last-child {
@@ -40,13 +44,14 @@ button.button {
     #ff9650 21.15%,
     rgba(255, 150, 80, 0.5) 112.03%
   );
+  overflow: hidden;
 
   .browser1 {
     position: absolute;
     top: 75px;
     left: calc(50% - 97px);
-    width: 432px;
     z-index: 10;
+    width: 432px;
   }
 
   .browser1 svg {
