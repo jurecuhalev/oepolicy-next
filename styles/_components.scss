@@ -82,3 +82,58 @@ button.button {
     width: 218px;
   }
 }
+
+.graphic-pink {
+  position: relative;
+  height: 500px;
+  @apply bg-pink;
+
+  .brochure {
+    width: 677px;
+    position: absolute;
+    left: calc(50% - 338px);
+    top: 0px;
+    z-index: 5;
+  }
+
+  .arrow1 {
+    position: absolute;
+    width: 178px;
+    top: 103px;
+    z-index: 10;
+
+    left: calc(50% - 60px);
+
+    @screen md {
+      left: calc(50% + 16px);
+    }
+  }
+
+  .arrow2 {
+    position: absolute;
+    width: 178px;
+    top: 225px;
+    z-index: 10;
+    left: calc(50% + 100px);
+
+    @screen md {
+      left: calc(50% + 129px);
+    }
+  }
+
+  .lines {
+    position: absolute;
+    width: 200px;
+    left: calc(50% - 288px);
+    top: 179px;
+    z-index: 10;
+  }
+
+  .sheet {
+    position: absolute;
+    width: 208px;
+    left: calc(50% - 319px);
+    top: 146px;
+    z-index: 1;
+  }
+}

@@ -16,6 +16,7 @@ import PartnersPageMd, {
 import SharePageMd, { frontMatter as sharePage } from "../docs/105-share.mdx";
 import GraphicOrange from "../components/GraphicOrange";
 import HeroHome from "../components/HeroHome";
+import GraphicPink from "../components/GraphicPink";
 
 const HomePage: FunctionComponent = () => (
   <Layout title="Home" hero={<HeroHome />}>
@@ -32,6 +33,7 @@ const HomePage: FunctionComponent = () => (
     <ContentBlock {...partnersPage}>
       <PartnersPageMd />
     </ContentBlock>
+    <GraphicPink />
     <ContentBlock {...sharePage}>
       <SharePageMd />
     </ContentBlock>

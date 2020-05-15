@@ -2,33 +2,14 @@
  * Parallax code example from:
  * https://ironeko.com/posts/parallax-effect-with-react-spring-how-to/
  */
-import React, {
-  FunctionComponent,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import PieChartColour from "../assets/svg/piechart_colour.svg";
 import BarChartPink from "../assets/svg/barchart_pink.svg";
 
-import { useSpring, animated as a, interpolate, animated } from "react-spring";
+import { animated, useSpring } from "react-spring";
+import { debounce } from "../utils/graphic-debounce";
 
-export function debounce(func, wait = 5, immediate = true) {
-  let timeout;
-  return function () {
-    const context = this;
-    const args = arguments;
-    const later = function () {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-    const callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
-}
-
+// noinspection DuplicatedCode
 const GraphicOrange: FunctionComponent = ({}) => {
   const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
@@ -40,7 +21,6 @@ const GraphicOrange: FunctionComponent = ({}) => {
   const [{ springscrollY }, springsetScrollY] = useSpring(() => ({
     springscrollY: 0,
   }));
-  const parallaxLevel = 20;
   springsetScrollY({ springscrollY: scrollY });
   const interpBrowser1 = springscrollY.interpolate(
     (o) => `translateY(${o / -30}px)`
@@ -50,11 +30,7 @@ const GraphicOrange: FunctionComponent = ({}) => {
   );
 
   return (
-    <animated.div
-      className="graphic-orange"
-      aria-hidden={true}
-      onScroll={(e) => console.log(e)}
-    >
+    <animated.div className="graphic-orange" aria-hidden={true}>
       <animated.div className="browser1" style={{ transform: interpBrowser1 }}>
         <img src="/img/browser.png" alt="" aria-hidden={true} />
         <PieChartColour />
