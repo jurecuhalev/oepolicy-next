@@ -6,6 +6,8 @@ import fetcher from "../../utils/fetcher";
 import IntroPageMd, {
   frontMatter as introPage,
 } from "../../docs/201-intro-explore.mdx";
+import DataPageMd, { frontMatter as dataPage } from "../../docs/202-data.mdx";
+
 import ContentBlock from "../../components/ContentBlock";
 import dynamic from "next/dynamic";
 import Hero from "../../components/Hero";
@@ -14,6 +16,14 @@ import LoaderPie from "../../components/LoaderPie";
 const PieChartPoliciesByFocus = dynamic(
   // @ts-ignore
   import("../../components/PieChart-ByFocus"),
+  {
+    ssr: false,
+  }
+);
+
+const BarChartPolicesByFocus = dynamic(
+  // @ts-ignore
+  import("../../components/BarChart-ByFocus"),
   {
     ssr: false,
   }
@@ -49,6 +59,20 @@ const ExplorePage: FunctionComponent = () => {
         ) : (
           <PieChartPoliciesByFocus items={data.member} />
         )}
+      </div>
+      <ContentBlock {...dataPage}>
+        <DataPageMd />
+      </ContentBlock>
+      <div className="bg-gray">
+        {!data ? <LoaderPie /> : <BarChartPolicesByFocus items={data.member} />}
+
+        <div className="container content pb-10">
+          <p>
+            OER World Map currently tracks 198 policies. This is a short extract
+            of a few ways to look at the data so that it can support you in
+            creating your policy.
+          </p>
+        </div>
       </div>
     </Layout>
   );
