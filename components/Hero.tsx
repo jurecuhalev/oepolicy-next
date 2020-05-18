@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactElement } from "react";
+import React, { FunctionComponent } from "react";
 
 interface IHero {
   background: "pink" | "orange";

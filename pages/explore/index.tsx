@@ -9,6 +9,7 @@ import IntroPageMd, {
 import ContentBlock from "../../components/ContentBlock";
 import dynamic from "next/dynamic";
 import Hero from "../../components/Hero";
+import LoaderPie from "../../components/LoaderPie";
 
 const PieChartPoliciesByFocus = dynamic(
   // @ts-ignore
@@ -44,7 +45,7 @@ const ExplorePage: FunctionComponent = () => {
       </ContentBlock>
       <div className="bg-gray">
         {!data ? (
-          <p>Loading data ...</p>
+          <LoaderPie />
         ) : (
           <PieChartPoliciesByFocus items={data.member} />
         )}
