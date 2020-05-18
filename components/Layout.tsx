@@ -14,6 +14,19 @@ const Layout: FunctionComponent<Props> = ({ children, title, hero }) => (
   <>
     <Head>
       <title>{title} | OE Policy Hub</title>
+      <link rel="shortcut icon" href="/favicon.png" />
+      <meta property="og:title" content={title} />
+      <meta property="og:site_name" content="OE Policy Hub" />
+      <meta property="og:url" content="https://oepolicy.netlify.app/" />
+      <meta
+        property="og:description"
+        content="Shaping Open Futures in Education Together"
+      />
+      <meta property="og:type" content="website" />
+      <meta
+        property="og:image"
+        content="https://oepolicy.netlify.app/facebook.png"
+      />
     </Head>
     <header className="bg-blue text-lg py-4 text-white">
       <div className="container mx-auto flex justify-between flex-col md:flex-row">
