@@ -19,6 +19,9 @@ module.exports = {
         serif: ["Source Serif Pro", ...defaultTheme.fontFamily.serif],
         sans: ["Courier Prime Sans", ...defaultTheme.fontFamily.serif],
       },
+      lineHeight: {
+        tight: "1.166666667",
+      },
     },
     container: {
       center: true,

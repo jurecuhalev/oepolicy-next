@@ -8,6 +8,7 @@ import IntroPageMd, {
 } from "../../docs/201-intro-explore.mdx";
 import ContentBlock from "../../components/ContentBlock";
 import dynamic from "next/dynamic";
+import Hero from "../../components/Hero";
 
 const PieChartPoliciesByFocus = dynamic(
   // @ts-ignore
@@ -27,7 +28,17 @@ const ExplorePage: FunctionComponent = () => {
   });
 
   return (
-    <Layout title="Explore OE Policies">
+    <Layout
+      title="Explore OE Policies"
+      hero={
+        <Hero>
+          <h1 className="text-5xl font-sans">
+            Explore our collection of <br className="hidden md:block" />
+            <b>Open Education Policies</b>
+          </h1>
+        </Hero>
+      }
+    >
       <ContentBlock {...introPage}>
         <IntroPageMd />
       </ContentBlock>

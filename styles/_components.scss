@@ -2,6 +2,26 @@
   height: 26px;
 }
 
+.hero {
+  min-height: 336px;
+
+  &.hero.orange {
+    background: linear-gradient(
+      352deg,
+      #ff9650 21.15%,
+      rgba(255, 150, 80, 0.5) 112.03%
+    );
+  }
+
+  &.hero.pink {
+    background: linear-gradient(
+      352deg,
+      #f06094 21.15%,
+      rgba(240, 96, 148, 0.5) 112.03%
+    );
+  }
+}
+
 .hero-home {
   background-image: url("/img/hero.jpg");
   background-size: cover;
