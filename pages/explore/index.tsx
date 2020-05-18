@@ -42,11 +42,13 @@ const ExplorePage: FunctionComponent = () => {
       <ContentBlock {...introPage}>
         <IntroPageMd />
       </ContentBlock>
-      {!data ? (
-        <p>Loading data ...</p>
-      ) : (
-        <PieChartPoliciesByFocus items={data.member} />
-      )}
+      <div className="bg-gray">
+        {!data ? (
+          <p>Loading data ...</p>
+        ) : (
+          <PieChartPoliciesByFocus items={data.member} />
+        )}
+      </div>
     </Layout>
   );
 };

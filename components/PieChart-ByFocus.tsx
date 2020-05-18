@@ -2,6 +2,22 @@ import { countBy } from "lodash";
 import Plot from "react-plotly.js";
 import React from "react";
 
+const piecolors = [
+  "#F5FF81",
+  "#3770B8",
+  "#00A3CB",
+  "#00D4BB",
+  "#6CFB98",
+
+  "#F6D948",
+  "#F6A008",
+  "#EF5E00",
+  "#E20001",
+  "#6822A9",
+  "#C0383A",
+  "#09783F",
+];
+
 const PieChartPoliciesByFocus = ({ items }) => {
   const data = countBy(
     items.flatMap((item) => {
@@ -31,9 +47,9 @@ const PieChartPoliciesByFocus = ({ items }) => {
   }
 
   return (
-    <div className="container">
+    <div className="container py-10">
       <Plot
-        style={{ width: "100%", minHeight: "500px" }}
+        style={{ width: "100%", minHeight: "600px" }}
         data={[
           {
             values: Object.values(data),
@@ -47,10 +63,31 @@ const PieChartPoliciesByFocus = ({ items }) => {
             texttemplate: "%{percent:1%f}",
             mode: "text",
             hole: 0.7,
+            marker: {
+              colors: piecolors,
+            },
           },
         ]}
         layout={{
           autosize: true,
+          plot_bgcolor: "#EEEEEE",
+          paper_bgcolor: "#EEEEEE",
+          title: {
+            text: "<b>OE Policies by Focus</b>",
+            font: {
+              family: "Courier Prime Sans, serif",
+              size: 36,
+            },
+            x: 0,
+          },
+          margin: {
+            l: 0,
+          },
+          font: {
+            family: "Source Sans Pro, sans-serif",
+            size: 16,
+            color: "#3E55CD",
+          },
         }}
         config={{ displaylogo: false, responsive: true }}
         onClick={handleClick}
