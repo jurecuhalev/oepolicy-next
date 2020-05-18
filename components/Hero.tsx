@@ -4,7 +4,7 @@ interface IHero {
   background: "pink" | "orange";
 }
 
-const Hero: FunctionComponent<IHero> = ({ children, background }) => (
+const Hero: FunctionComponent<IHero> = ({ background, children }) => (
   <div
     className={[
       "hero",

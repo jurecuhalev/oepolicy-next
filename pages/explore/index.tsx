@@ -31,7 +31,7 @@ const ExplorePage: FunctionComponent = () => {
     <Layout
       title="Explore OE Policies"
       hero={
-        <Hero>
+        <Hero background="orange">
           <h1 className="text-5xl font-sans">
             Explore our collection of <br className="hidden md:block" />
             <b>Open Education Policies</b>
