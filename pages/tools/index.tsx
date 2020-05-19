@@ -10,6 +10,7 @@ import ToolsPageMd, {
 import ReadingsPageMd, {
   frontMatter as readingsPage,
 } from "../../docs/302-readings.mdx";
+import GraphicOrangeTools from "../../components/GraphicOrangeTools";
 
 const ToolsPage: FunctionComponent = () => {
   return (
@@ -28,6 +29,7 @@ const ToolsPage: FunctionComponent = () => {
       <ContentBlock {...toolsPage}>
         <ToolsPageMd />
       </ContentBlock>
+      <GraphicOrangeTools />
       <ContentBlock {...readingsPage}>
         <ReadingsPageMd />
       </ContentBlock>
