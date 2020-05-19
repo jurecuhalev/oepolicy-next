@@ -42,12 +42,12 @@ const Layout: FunctionComponent<Props> = ({ children, title, hero }) => (
         </div>
         <div className="flex justify-end flex-col md:flex-row">
           <div className="flex-shrink mb-2 md:mb-0">
-            <Link href="/">
+            <Link href="/explore">
               <a>Collection &amp; Statistics</a>
             </Link>
           </div>
           <div className="flex-shrink md:ml-8">
-            <Link href="/">
+            <Link href="/tools">
               <a>Tools &amp; Resources</a>
             </Link>
           </div>
@@ -62,12 +62,12 @@ const Layout: FunctionComponent<Props> = ({ children, title, hero }) => (
           <ul className="font-bold">
             <li className="mb-4">Open Education Policy Hub</li>
             <li>
-              <Link href="/">
+              <Link href="/explore">
                 <a>Collection &amp; Statistics</a>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/tools">
                 <a>Tools &amp; Resources</a>
               </Link>
             </li>
