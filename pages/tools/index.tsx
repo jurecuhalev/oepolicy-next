@@ -15,7 +15,7 @@ import GraphicOrangeTools from "../../components/GraphicOrangeTools";
 const ToolsPage: FunctionComponent = () => {
   return (
     <Layout
-      title="Explore OE Policies"
+      title="Tools &amp; Resources for creating Open Education Policies"
       hero={
         <Hero background="pink">
           <h1 className="text-5xl font-sans">
