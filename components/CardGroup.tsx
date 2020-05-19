@@ -8,7 +8,8 @@ const CardGroup: FunctionComponent<{ cols: number }> = ({ cols, children }) => (
 
       "gap-6",
       "grid-cols-1",
-      `md:grid-cols-${cols}`,
+      // PurgeCSS: md:grid-cols-2 md:grid-cols-3 md:grid-cols-4 md:grid-cols-5
+      `md:grid-cols-${cols ? cols : 3}`,
     ].join(" ")}
   >
     {children}
