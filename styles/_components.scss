@@ -55,105 +55,38 @@ button.button {
   @apply bg-blue text-white px-6 py-4 font-sans text-xl;
 
   border-radius: 5px;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
 
   &:hover {
     @apply bg-pink no-underline shadow-none;
   }
 }
 
-.graphic-orange {
-  position: relative;
-  height: 500px;
-  background: linear-gradient(
-    352deg,
-    #ff9650 21.15%,
-    rgba(255, 150, 80, 0.5) 112.03%
-  );
-  overflow: hidden;
+/*
+ * Cards
+ */
 
-  .browser1 {
-    position: absolute;
-    top: 75px;
-    left: calc(50% - 97px);
-    z-index: 10;
-    width: 432px;
-  }
-
-  .browser1 svg {
-    position: absolute;
-    top: 75px;
-    left: calc(50% - 85px);
-    height: 148px;
-  }
-
-  .browser2 {
-    position: absolute;
-    top: 178px;
-    width: 372px;
-    left: calc(50% - 300px);
-    z-index: 5;
-  }
-
-  .browser2 svg {
-    position: absolute;
-    top: 70px;
-    left: calc(50% - 110px);
-    width: 218px;
-  }
+.card__description {
+  min-height: 100px;
 }
 
-.graphic-pink {
-  position: relative;
-  height: 500px;
-  @apply bg-pink;
+.card__links {
+  a {
+    position: relative;
+    padding-left: 24px;
 
-  .brochure {
-    width: 677px;
-    position: absolute;
-    left: calc(50% - 338px);
-    top: 0px;
-    z-index: 5;
+    @apply font-sans-source font-semibold;
   }
 
-  .arrow1 {
+  a::before {
+    content: "";
     position: absolute;
-    width: 178px;
-    top: 103px;
-    z-index: 10;
+    left: 0;
+    top: 12px;
+    height: 24px;
+    width: 24px;
+    background: url("/img/arrow.svg") no-repeat;
 
-    left: calc(50% - 60px);
-
-    @screen md {
-      left: calc(50% + 16px);
-    }
-  }
-
-  .arrow2 {
-    position: absolute;
-    width: 178px;
-    top: 225px;
-    z-index: 10;
-    left: calc(50% + 100px);
-
-    @screen md {
-      left: calc(50% + 129px);
-    }
-  }
-
-  .lines {
-    position: absolute;
-    width: 200px;
-    left: calc(50% - 288px);
-    top: 179px;
-    z-index: 10;
-  }
-
-  .sheet {
-    position: absolute;
-    width: 208px;
-    left: calc(50% - 319px);
-    top: 146px;
-    z-index: 1;
+    @apply font-sans font-semibold;
   }
 }

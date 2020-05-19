@@ -1,0 +1,95 @@
+.graphic-orange {
+  position: relative;
+  height: 500px;
+  background: linear-gradient(
+    352deg,
+    #ff9650 21.15%,
+    rgba(255, 150, 80, 0.5) 112.03%
+  );
+  overflow: hidden;
+
+  .browser1 {
+    position: absolute;
+    top: 75px;
+    left: calc(50% - 97px);
+    z-index: 10;
+    width: 432px;
+  }
+
+  .browser1 svg {
+    position: absolute;
+    top: 75px;
+    left: calc(50% - 85px);
+    height: 148px;
+  }
+
+  .browser2 {
+    position: absolute;
+    top: 178px;
+    width: 372px;
+    left: calc(50% - 300px);
+    z-index: 5;
+  }
+
+  .browser2 svg {
+    position: absolute;
+    top: 70px;
+    left: calc(50% - 110px);
+    width: 218px;
+  }
+}
+
+.graphic-pink {
+  position: relative;
+  height: 500px;
+  @apply bg-pink;
+
+  .brochure {
+    width: 677px;
+    position: absolute;
+    left: calc(50% - 338px);
+    top: 0px;
+    z-index: 5;
+  }
+
+  .arrow1 {
+    position: absolute;
+    width: 178px;
+    top: 103px;
+    z-index: 10;
+
+    left: calc(50% - 60px);
+
+    @screen md {
+      left: calc(50% + 16px);
+    }
+  }
+
+  .arrow2 {
+    position: absolute;
+    width: 178px;
+    top: 225px;
+    z-index: 10;
+    left: calc(50% + 100px);
+
+    @screen md {
+      left: calc(50% + 129px);
+    }
+  }
+
+  .lines {
+    position: absolute;
+    width: 200px;
+    left: calc(50% - 288px);
+    top: 179px;
+    z-index: 10;
+  }
+
+  .sheet {
+    position: absolute;
+    width: 208px;
+    left: calc(50% - 319px);
+    top: 146px;
+    z-index: 1;
+  }
+}
