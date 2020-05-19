@@ -29,7 +29,7 @@ const Card: FunctionComponent<ICard> = ({
       {description && <div>{description}</div>}
     </div>
 
-    <div className="card__links">
+    <div className="card__links mt-6">
       <a
         className="block truncate"
         href={href}
