@@ -1,29 +1,19 @@
-import { countBy } from "lodash";
+import { countBy, toPairs, sortBy } from "lodash";
 import Plot from "react-plotly.js";
 import React from "react";
-
-const piecolors = [
-  "#F5FF81",
-  "#3770B8",
-  "#00A3CB",
-  "#00D4BB",
-  "#6CFB98",
-
-  "#F6D948",
-  "#F6A008",
-  "#EF5E00",
-  "#E20001",
-  "#6822A9",
-  "#C0383A",
-  "#09783F",
-];
+import { piecolors } from "../utils/colors";
 
 const PieChartPoliciesByFocus = ({ items }) => {
-  const data = countBy(
+  let data = countBy(
     items.flatMap((item) => {
       return item.about.focus ? item.about.focus : [];
     })
   );
+  const sortedData = sortBy(toPairs(data), [
+    (o) => {
+      return o[1];
+    },
+  ]).reverse();
 
   function handleClick(e) {
     if (e.points) {
@@ -52,11 +42,12 @@ const PieChartPoliciesByFocus = ({ items }) => {
         style={{ width: "100%", minHeight: "600px" }}
         data={[
           {
-            values: Object.values(data),
-            labels: Object.keys(data),
+            values: sortedData.map((v) => v[1]),
+            labels: sortedData.map((v) => v[0]),
             type: "pie",
             automargin: true,
-            sort: true,
+            sort: false,
+            direction: "clockwise",
             showlegend: true,
             textinfo: "text",
             textposition: "inside",
