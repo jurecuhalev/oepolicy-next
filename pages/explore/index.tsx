@@ -12,6 +12,7 @@ import ContentBlock from "../../components/ContentBlock";
 import dynamic from "next/dynamic";
 import Hero from "../../components/Hero";
 import LoaderPie from "../../components/LoaderPie";
+// import MapDisplay from "../../components/MapDisplay";
 
 const PieChartPoliciesByFocus = dynamic(
   // @ts-ignore
@@ -29,6 +30,13 @@ const BarChartPolicesByFocus = dynamic(
   }
 );
 
+const MapDisplay = dynamic(
+  // @ts-ignore
+  import("../../components/MapDisplay"),
+  {
+    ssr: false,
+  }
+);
 const ExplorePage: FunctionComponent = () => {
   const url =
     "https://oerworldmap.org/resource.json?q=about.@type:Policy&sort=dateCreated:DESC&size=500";
@@ -50,6 +58,11 @@ const ExplorePage: FunctionComponent = () => {
         </Hero>
       }
     >
+      <div className="bg-white">
+        <div className="containter">
+          {!data ? <LoaderPie /> : <MapDisplay items={data.member} />}
+        </div>
+      </div>
       <ContentBlock {...introPage}>
         <IntroPageMd />
       </ContentBlock>

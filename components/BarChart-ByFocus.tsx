@@ -1,9 +1,11 @@
 import { countBy } from "lodash";
 import Plot from "react-plotly.js";
-import Plotly, { d3 } from "plotly.js";
-import React, { useRef } from "react";
+import { d3 } from "plotly.js";
+import React, { FunctionComponent, useRef } from "react";
 
-const BarChartPolicesByFocus = ({ items }) => {
+const BarChartPolicesByFocus: FunctionComponent<{ items: any[] }> = ({
+  items,
+}) => {
   let plotRef = useRef(null);
   const data = countBy(
     items.flatMap((item) => {
