@@ -1,22 +1,19 @@
 import { countBy } from "lodash";
 import React, { FunctionComponent, useRef } from "react";
 import BarChart from "./BarChart";
+import { dataSimple } from "../utils/charts";
 
 const BarChartPoliciesByLevel: FunctionComponent<{ items: any[] }> = ({
   items,
 }) => {
-  const data = countBy(
-    items.flatMap((item) => {
-      return item.about.spatialCoverage ? item.about.spatialCoverage : [];
-    })
-  );
+  const data = dataSimple(items, "spatialCoverage");
 
   return (
     <BarChart
       x={Object.values(data)}
       y={Object.keys(data)}
       text={Object.values(data).map(String)}
-      url={`https://oerworldmap.org/resource/?filter.about.%40type=%22Policy%22&filter.about.spatialCoverage=`}
+      filterName="spatialCoverage"
       title="OE Policies by Level"
     />
   );

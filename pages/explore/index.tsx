@@ -12,7 +12,6 @@ import ContentBlock from "../../components/ContentBlock";
 import dynamic from "next/dynamic";
 import Hero from "../../components/Hero";
 import LoaderPie from "../../components/LoaderPie";
-// import MapDisplay from "../../components/MapDisplay";
 
 const PieChartPoliciesByFocus = dynamic(
   // @ts-ignore
@@ -33,6 +32,22 @@ const BarChartPoliciesByFocus = dynamic(
 const BarChartPoliciesByLevel = dynamic(
   // @ts-ignore
   import("../../components/BarChart-ByLevel"),
+  {
+    ssr: false,
+  }
+);
+
+const BarChartPoliciesBySector = dynamic(
+  // @ts-ignore
+  import("../../components/BarChart-BySector"),
+  {
+    ssr: false,
+  }
+);
+
+const BarChartPoliciesByScope = dynamic(
+  // @ts-ignore
+  import("../../components/BarChart-ByScope"),
   {
     ssr: false,
   }
@@ -79,6 +94,20 @@ const ExplorePage: FunctionComponent = () => {
           <LoaderPie />
         ) : (
           <BarChartPoliciesByLevel items={data.member} />
+        )}
+      </div>
+      <div className="bg-gray">
+        {!data ? (
+          <LoaderPie />
+        ) : (
+          <BarChartPoliciesBySector items={data.member} />
+        )}
+      </div>
+      <div className="bg-gray">
+        {!data ? (
+          <LoaderPie />
+        ) : (
+          <BarChartPoliciesByScope items={data.member} />
         )}
       </div>
       <div className="bg-gray">
