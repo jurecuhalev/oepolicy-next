@@ -83,7 +83,7 @@ const Layout: FunctionComponent<Props> = ({ children, title, hero }) => (
             </li>
 
             <li className="mt-8 font-normal">
-              <Link href="/">
+              <Link href="/imprint">
                 <a>Imprint &amp; Privacy</a>
               </Link>
             </li>
