@@ -2,12 +2,12 @@ import { countBy } from "lodash";
 import React, { FunctionComponent, useRef } from "react";
 import BarChart from "./BarChart";
 
-const BarChartPoliciesByFocus: FunctionComponent<{ items: any[] }> = ({
+const BarChartPoliciesByLevel: FunctionComponent<{ items: any[] }> = ({
   items,
 }) => {
   const data = countBy(
     items.flatMap((item) => {
-      return item.about.focus ? item.about.focus : [];
+      return item.about.spatialCoverage ? item.about.spatialCoverage : [];
     })
   );
 
@@ -16,10 +16,10 @@ const BarChartPoliciesByFocus: FunctionComponent<{ items: any[] }> = ({
       x={Object.values(data)}
       y={Object.keys(data)}
       text={Object.values(data).map(String)}
-      url={`https://oerworldmap.org/resource/?filter.about.%40type=%22Policy%22&filter.about.focus.keyword=`}
-      title="OE Policies by Focus"
+      url={`https://oerworldmap.org/resource/?filter.about.%40type=%22Policy%22&filter.about.spatialCoverage=`}
+      title="OE Policies by Level"
     />
   );
 };
 
-export default BarChartPoliciesByFocus;
+export default BarChartPoliciesByLevel;

@@ -22,9 +22,17 @@ const PieChartPoliciesByFocus = dynamic(
   }
 );
 
-const BarChartPolicesByFocus = dynamic(
+const BarChartPoliciesByFocus = dynamic(
   // @ts-ignore
   import("../../components/BarChart-ByFocus"),
+  {
+    ssr: false,
+  }
+);
+
+const BarChartPoliciesByLevel = dynamic(
+  // @ts-ignore
+  import("../../components/BarChart-ByLevel"),
   {
     ssr: false,
   }
@@ -70,6 +78,13 @@ const ExplorePage: FunctionComponent = () => {
         {!data ? (
           <LoaderPie />
         ) : (
+          <BarChartPoliciesByLevel items={data.member} />
+        )}
+      </div>
+      <div className="bg-gray">
+        {!data ? (
+          <LoaderPie />
+        ) : (
           <PieChartPoliciesByFocus items={data.member} />
         )}
       </div>
@@ -77,7 +92,11 @@ const ExplorePage: FunctionComponent = () => {
         <DataPageMd />
       </ContentBlock>
       <div className="bg-gray">
-        {!data ? <LoaderPie /> : <BarChartPolicesByFocus items={data.member} />}
+        {!data ? (
+          <LoaderPie />
+        ) : (
+          <BarChartPoliciesByFocus items={data.member} />
+        )}
 
         <div className="container content pb-10">
           <p>

@@ -7,7 +7,8 @@ const BarChart: FunctionComponent<{
   y: any[];
   text: string[];
   url: string;
-}> = ({ x, y, text, url }) => {
+  title: string;
+}> = ({ x, y, text, url, title }) => {
   let plotRef = useRef(null);
 
   function handleClick(e) {
@@ -62,7 +63,7 @@ const BarChart: FunctionComponent<{
           plot_bgcolor: "#EEEEEE",
           paper_bgcolor: "#EEEEEE",
           title: {
-            text: "<b>OE Policies by Focus</b>",
+            text: `<b>${title}</b>`,
             font: {
               family: "Courier Prime Sans, serif",
               size: 36,
