@@ -54,8 +54,9 @@ const BarChart: FunctionComponent<{
 
   const addExtraClickEvents = () => {
     console.log("extra events", filterName, urlMapping);
+    console.log(d3.selectAll(".yaxislayer-above").selectAll("text"));
     d3.selectAll(".yaxislayer-above")
-      .selectAll("ytick")
+      .selectAll("text")
       .on("click", function (d) {
         console.log(d.text, filterName, urlMapping);
         const label = sanitizeLabel(d.text);
@@ -125,8 +126,22 @@ const BarChart: FunctionComponent<{
         config={{
           displaylogo: false,
           responsive: true,
-          displayModeBar: false,
           scrollZoom: false,
+          displayModeBar: true,
+          modeBarButtonsToRemove: [
+            "zoom2d",
+            "pan2d",
+            "select2d",
+            "lasso2d",
+            "zoomIn2d",
+            "zoomOut2d",
+            "autoScale2d",
+            "resetScale2d",
+            "hoverClosestCartesian",
+            "hoverCompareCartesian",
+            "toImage",
+            "toggleSpikelines",
+          ],
         }}
         onClick={handleClick}
         onAfterPlot={addExtraClickEvents}
