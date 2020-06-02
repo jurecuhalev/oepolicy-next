@@ -1,11 +1,11 @@
-import React, { FunctionComponent, useRef } from "react";
-import BarChart from "./BarChart";
-import { dataWithMapping, urlMapping } from "../utils/charts";
+import React, { FunctionComponent } from "react"
+import BarChart from "./BarChart"
+import { dataWithMapping, urlMapping } from "../utils/charts"
 
 const BarChartPoliciesBySector: FunctionComponent<{ items: any[] }> = ({
   items,
 }) => {
-  const data = dataWithMapping(items, "primarySector");
+  const data = dataWithMapping(items, "primarySector")
   return (
     <BarChart
       x={Object.values(data)}
@@ -15,7 +15,7 @@ const BarChartPoliciesBySector: FunctionComponent<{ items: any[] }> = ({
       title="OE Policies by Primary Educational Sector"
       urlMapping={urlMapping(items, "primarySector")}
     />
-  );
-};
+  )
+}
 
-export default BarChartPoliciesBySector;
+export default BarChartPoliciesBySector

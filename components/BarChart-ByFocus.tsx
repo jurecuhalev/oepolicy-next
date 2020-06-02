@@ -1,12 +1,11 @@
-import { countBy } from "lodash";
-import React, { FunctionComponent, useRef } from "react";
-import BarChart from "./BarChart";
-import { dataSimple } from "../utils/charts";
+import React, { FunctionComponent } from "react"
+import BarChart from "./BarChart"
+import { dataSimple } from "../utils/charts"
 
 const BarChartPoliciesByFocus: FunctionComponent<{ items: any[] }> = ({
   items,
 }) => {
-  const data = dataSimple(items, "focus");
+  const data = dataSimple(items, "focus")
 
   return (
     <BarChart
@@ -16,7 +15,7 @@ const BarChartPoliciesByFocus: FunctionComponent<{ items: any[] }> = ({
       filterName="focus"
       title="OE Policies by Focus"
     />
-  );
-};
+  )
+}
 
-export default BarChartPoliciesByFocus;
+export default BarChartPoliciesByFocus

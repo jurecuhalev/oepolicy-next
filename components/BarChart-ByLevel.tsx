@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef } from "react"
+import React, { FunctionComponent } from "react"
 import BarChart from "./BarChart"
 import { dataSimple } from "../utils/charts"
 

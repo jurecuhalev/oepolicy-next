@@ -1,14 +1,13 @@
-import React, { FunctionComponent } from "react";
-import Link from "next/link";
-import URL from "url";
+import React, { FunctionComponent } from "react"
+import URL from "url"
 
 interface ICard {
-  type: "tool" | "paper";
-  author: string;
-  title: string;
-  description: string;
-  href: string;
-  maphref: string;
+  type: "tool" | "paper"
+  author: string
+  title: string
+  description: string
+  href: string
+  maphref: string
 }
 
 const Card: FunctionComponent<ICard> = ({
@@ -50,6 +49,6 @@ const Card: FunctionComponent<ICard> = ({
       )}
     </div>
   </article>
-);
+)
 
-export default Card;
+export default Card

@@ -1,17 +1,17 @@
-import React, { FunctionComponent } from "react";
-import Layout from "../../components/Layout";
-import useSWR from "swr";
-import fetcher from "../../utils/fetcher";
+import React, { FunctionComponent } from "react"
+import Layout from "../../components/Layout"
+import useSWR from "swr"
+import fetcher from "../../utils/fetcher"
 
 import IntroPageMd, {
   frontMatter as introPage,
-} from "../../docs/201-intro-explore.mdx";
-import DataPageMd, { frontMatter as dataPage } from "../../docs/202-data.mdx";
+} from "../../docs/201-intro-explore.mdx"
+import DataPageMd, { frontMatter as dataPage } from "../../docs/202-data.mdx"
 
-import ContentBlock from "../../components/ContentBlock";
-import dynamic from "next/dynamic";
-import Hero from "../../components/Hero";
-import LoaderPie from "../../components/LoaderPie";
+import ContentBlock from "../../components/ContentBlock"
+import dynamic from "next/dynamic"
+import Hero from "../../components/Hero"
+import LoaderPie from "../../components/LoaderPie"
 
 const PieChartPoliciesByFocus = dynamic(
   // @ts-ignore
@@ -19,7 +19,7 @@ const PieChartPoliciesByFocus = dynamic(
   {
     ssr: false,
   }
-);
+)
 
 const BarChartPoliciesByFocus = dynamic(
   // @ts-ignore
@@ -27,7 +27,7 @@ const BarChartPoliciesByFocus = dynamic(
   {
     ssr: false,
   }
-);
+)
 
 const BarChartPoliciesByLevel = dynamic(
   // @ts-ignore
@@ -35,7 +35,7 @@ const BarChartPoliciesByLevel = dynamic(
   {
     ssr: false,
   }
-);
+)
 
 const BarChartPoliciesBySector = dynamic(
   // @ts-ignore
@@ -43,7 +43,7 @@ const BarChartPoliciesBySector = dynamic(
   {
     ssr: false,
   }
-);
+)
 
 const BarChartPoliciesByScope = dynamic(
   // @ts-ignore
@@ -51,7 +51,7 @@ const BarChartPoliciesByScope = dynamic(
   {
     ssr: false,
   }
-);
+)
 
 const MapDisplay = dynamic(
   // @ts-ignore
@@ -59,15 +59,15 @@ const MapDisplay = dynamic(
   {
     ssr: false,
   }
-);
+)
 const ExplorePage: FunctionComponent = () => {
   const url =
-    "https://oerworldmap.org/resource.json?q=about.@type:Policy&sort=dateCreated:DESC&size=500";
+    "https://oerworldmap.org/resource.json?q=about.@type:Policy&sort=dateCreated:DESC&size=500"
 
-  const { data, error, isValidating, mutate } = useSWR(url, fetcher, {
+  const { data } = useSWR(url, fetcher, {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
-  });
+  })
 
   return (
     <Layout
@@ -136,7 +136,7 @@ const ExplorePage: FunctionComponent = () => {
         </div>
       </div>
     </Layout>
-  );
-};
+  )
+}
 
-export default ExplorePage;
+export default ExplorePage

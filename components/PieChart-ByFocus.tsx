@@ -1,39 +1,39 @@
-import { countBy, toPairs, sortBy } from "lodash";
-import Plot from "react-plotly.js";
-import React from "react";
-import { piecolors } from "../utils/colors";
+import { countBy, toPairs, sortBy } from "lodash"
+import Plot from "react-plotly.js"
+import React from "react"
+import { piecolors } from "../utils/colors"
 
 const PieChartPoliciesByFocus = ({ items }) => {
-  let data = countBy(
+  const data = countBy(
     items.flatMap((item) => {
-      return item.about.focus ? item.about.focus : [];
+      return item.about.focus ? item.about.focus : []
     })
-  );
+  )
   const sortedData = sortBy(toPairs(data), [
     (o) => {
-      return o[1];
+      return o[1]
     },
-  ]).reverse();
+  ]).reverse()
 
   function handleClick(e) {
     if (e.points) {
-      const point = e.points[0];
-      const label = point.label;
+      const point = e.points[0]
+      const label = point.label
       window.open(
         `https://oerworldmap.org/resource/?filter.about.%40type=%22Policy%22&filter.about.focus.keyword=%5B%22${label}%22%5D`,
         "_blank"
-      );
-      return false;
+      )
+      return false
     }
   }
 
   function handleLegendClick(e) {
-    const label = e.node.textContent;
+    const label = e.node.textContent
     window.open(
       `https://oerworldmap.org/resource/?filter.about.%40type=%22Policy%22&filter.about.focus.keyword=%5B%22${label}%22%5D`,
       "_blank"
-    );
-    return false;
+    )
+    return false
   }
 
   return (
@@ -86,7 +86,7 @@ const PieChartPoliciesByFocus = ({ items }) => {
         onLegendDoubleClick={handleLegendClick}
       />
     </div>
-  );
-};
+  )
+}
 
-export default PieChartPoliciesByFocus;
+export default PieChartPoliciesByFocus

@@ -1,11 +1,11 @@
-import React, { FunctionComponent, useRef } from "react";
-import BarChart from "./BarChart";
-import { dataWithMapping, urlMapping } from "../utils/charts";
+import React, { FunctionComponent } from "react"
+import BarChart from "./BarChart"
+import { dataWithMapping, urlMapping } from "../utils/charts"
 
 const BarChartPoliciesByScope: FunctionComponent<{ items: any[] }> = ({
   items,
 }) => {
-  const data = dataWithMapping(items, "scope");
+  const data = dataWithMapping(items, "scope")
 
   return (
     <BarChart
@@ -16,7 +16,7 @@ const BarChartPoliciesByScope: FunctionComponent<{ items: any[] }> = ({
       title="OE Policies by Scope"
       urlMapping={urlMapping(items, "scope")}
     />
-  );
-};
+  )
+}
 
-export default BarChartPoliciesByScope;
+export default BarChartPoliciesByScope

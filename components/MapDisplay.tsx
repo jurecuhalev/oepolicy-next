@@ -1,6 +1,6 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from "react";
-import MapGL from "react-map-gl";
-import Pins from "./MapPin";
+import React, { FunctionComponent, useEffect, useState } from "react"
+import MapGL from "react-map-gl"
+import Pins from "./MapPin"
 
 const countriesCoordinates = {
   DE: {
@@ -89,7 +89,7 @@ const countriesCoordinates = {
     latitude: 23,
     longitude: -102,
   },
-};
+}
 
 const manualMapping = {
   "urn:uuid:f81ee4cf-aa5c-4834-85fb-0c5e6a0cfc6d": {
@@ -107,7 +107,7 @@ const manualMapping = {
     latitude: 33.9249,
     longitude: 18.4241,
   },
-};
+}
 
 const MapDisplay: FunctionComponent<{ items: any[] }> = ({ items }) => {
   const [state, setState] = useState({
@@ -117,8 +117,8 @@ const MapDisplay: FunctionComponent<{ items: any[] }> = ({ items }) => {
       center: [0, 42],
       zoom: 1,
     },
-  });
-  const [pins, setPins] = useState([]);
+  })
+  const [pins, setPins] = useState([])
 
   useEffect(() => {
     const pins = items
@@ -129,35 +129,35 @@ const MapDisplay: FunctionComponent<{ items: any[] }> = ({ items }) => {
           i?.about?.location
       )
       .map((i) => {
-        const defaults = { id: i["@id"] };
+        const defaults = { id: i["@id"] }
         if (i?.feature?.geometry?.coordinates) {
-          const [long, lat] = i.feature.geometry.coordinates;
+          const [long, lat] = i.feature.geometry.coordinates
           return {
             longitude: Array.isArray(long) ? long[0] : long,
             latitude: Array.isArray(lat) ? lat[0] : lat,
             ...defaults,
-          };
+          }
         } else if (i.feature?.properties?.location) {
           if (i.feature.properties.location?.geo) {
-            const { lat, lon } = i.feature.properties.location.geo;
+            const { lat, lon } = i.feature.properties.location.geo
             return {
               longitude: lon,
               latitude: lat,
               ...defaults,
-            };
+            }
           }
 
-          const country = i.feature.properties.location.address.addressCountry;
-          return { ...countriesCoordinates[country], ...defaults };
+          const country = i.feature.properties.location.address.addressCountry
+          return { ...countriesCoordinates[country], ...defaults }
         } else if (i.about?.location) {
-          const country = i.about.location[0].address.addressCountry;
-          return { ...countriesCoordinates[country], ...defaults };
+          const country = i.about.location[0].address.addressCountry
+          return { ...countriesCoordinates[country], ...defaults }
         } else {
-          return { ...manualMapping[i["@id"]], ...defaults };
+          return { ...manualMapping[i["@id"]], ...defaults }
         }
-      });
-    setPins(pins);
-  }, [items]);
+      })
+    setPins(pins)
+  }, [items])
 
   return (
     <MapGL
@@ -171,12 +171,12 @@ const MapDisplay: FunctionComponent<{ items: any[] }> = ({ items }) => {
         onClick={(id) => {
           window.open(
             `https://oerworldmap.org/resource/${id}`.replace(".about", "")
-          );
-          return false;
+          )
+          return false
         }}
       />
     </MapGL>
-  );
-};
+  )
+}
 
-export default MapDisplay;
+export default MapDisplay
