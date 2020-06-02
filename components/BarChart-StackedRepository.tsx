@@ -73,7 +73,8 @@ const BarChartStackedRepository: FunctionComponent<{
           },
           margin: {
             r: 150,
-            l: 5,
+            l: 25,
+            b: 150,
           },
           font: {
             family: "Source Sans Pro, sans-serif",
