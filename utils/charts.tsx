@@ -1,4 +1,5 @@
 import { countBy, uniqBy } from "lodash";
+import { string } from "prop-types";
 
 export const urlMapping = (items: any[], field: string): any => {
   return uniqBy(
@@ -28,10 +29,13 @@ export const dataWithMapping = (items: any[], field: string): any => {
   );
 };
 
-export const dataSimple = (items: any[], field: string): any => {
+export const dataSimple = (
+  items: any[],
+  field: string
+): { [key: string]: number } => {
   return countBy(
     items.flatMap((item) => {
-      return item.about.spatialCoverage ? item.about.spatialCoverage : [];
+      return `item.about.${field}` ? item.about[field] : [];
     })
   );
 };

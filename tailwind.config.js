@@ -1,7 +1,6 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
+const defaultTheme = require("tailwindcss/defaultTheme")
 
 module.exports = {
-  purge: [],
   theme: {
     extend: {
       spacing: {
@@ -42,4 +41,4 @@ module.exports = {
     "./components/**/*.js",
     "./components/**/*.tsx",
   ],
-};
+}

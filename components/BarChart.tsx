@@ -30,8 +30,8 @@ const buildFinalUrl = (
 };
 
 const BarChart: FunctionComponent<{
-  x: any[];
-  y: any[];
+  x: number[];
+  y: string[];
   text: string[];
   filterName: string;
   title: string;
@@ -53,14 +53,14 @@ const BarChart: FunctionComponent<{
   }
 
   const addExtraClickEvents = () => {
-    console.log("extra events", filterName, urlMapping);
-    console.log(d3.selectAll(".yaxislayer-above").selectAll("text"));
+    const _filterName = filterName;
+    const _urlMapping = urlMapping;
+
     d3.selectAll(".yaxislayer-above")
       .selectAll("text")
       .on("click", function (d) {
-        console.log(d.text, filterName, urlMapping);
         const label = sanitizeLabel(d.text);
-        window.open(buildFinalUrl(filterName, label, urlMapping), "_blank");
+        window.open(buildFinalUrl(_filterName, label, _urlMapping), "_blank");
         return false;
       });
   };
