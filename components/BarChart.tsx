@@ -27,10 +27,10 @@ const BarChart: FunctionComponent<{
   x: number[]
   y: string[]
   text: string[]
-  filterName: string
+  fieldName: string
   title: string
   urlMapping?: { name: string; id: string }
-}> = ({ x, y, text, filterName, title, urlMapping }) => {
+}> = ({ x, y, text, fieldName, title, urlMapping }) => {
   const plotRef = useRef(null)
 
   // Plotly doesn't support word wrap on legend items, so we manually add <br /> line breaks
@@ -41,20 +41,17 @@ const BarChart: FunctionComponent<{
     if (e.points) {
       const point = e.points[0]
       const label = sanitizeLabel(point.label)
-      window.open(buildFinalUrl(filterName, label, urlMapping), "_blank")
+      window.open(buildFinalUrl(fieldName, label, urlMapping), "_blank")
       return false
     }
   }
 
   const addExtraClickEvents = () => {
-    const _filterName = filterName
-    const _urlMapping = urlMapping
-
     d3.selectAll(".yaxislayer-above")
       .selectAll("text")
       .on("click", function (d) {
         const label = sanitizeLabel(d.text)
-        window.open(buildFinalUrl(_filterName, label, _urlMapping), "_blank")
+        window.open(buildFinalUrl(fieldName, label, urlMapping), "_blank")
         return false
       })
   }
@@ -121,21 +118,7 @@ const BarChart: FunctionComponent<{
           displaylogo: false,
           responsive: true,
           scrollZoom: false,
-          displayModeBar: true,
-          modeBarButtonsToRemove: [
-            "zoom2d",
-            "pan2d",
-            "select2d",
-            "lasso2d",
-            "zoomIn2d",
-            "zoomOut2d",
-            "autoScale2d",
-            "resetScale2d",
-            "hoverClosestCartesian",
-            "hoverCompareCartesian",
-            "toImage",
-            "toggleSpikelines",
-          ],
+          displayModeBar: false,
         }}
         onClick={handleClick}
         onAfterPlot={addExtraClickEvents}

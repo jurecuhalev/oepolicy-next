@@ -53,6 +53,14 @@ const BarChartPoliciesByScope = dynamic(
   }
 )
 
+const BarChartPoliciesByCountry = dynamic(
+  // @ts-ignore
+  import("../../components/BarChart-ByCountry"),
+  {
+    ssr: false,
+  }
+)
+
 const MapDisplay = dynamic(
   // @ts-ignore
   import("../../components/MapDisplay"),
@@ -108,6 +116,13 @@ const ExplorePage: FunctionComponent = () => {
           <LoaderPie />
         ) : (
           <BarChartPoliciesByScope items={data.member} />
+        )}
+      </div>
+      <div className="bg-gray">
+        {!data ? (
+          <LoaderPie />
+        ) : (
+          <BarChartPoliciesByCountry items={data.member} />
         )}
       </div>
       <div className="bg-gray">
