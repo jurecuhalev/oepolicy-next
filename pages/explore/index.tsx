@@ -105,11 +105,11 @@ const ExplorePage: FunctionComponent = () => {
         </Hero>
       }
     >
-      <div className="bg-white">
-        <div className="containter">
-          {!data ? <LoaderPie /> : <MapDisplay items={data.member} />}
-        </div>
-      </div>
+      {/*<div className="bg-white">*/}
+      {/*  <div className="containter">*/}
+      {/*    {!data ? <LoaderPie /> : <MapDisplay items={data.member} />}*/}
+      {/*  </div>*/}
+      {/*</div>*/}
       <ContentBlock {...introPage}>
         <IntroPageMd />
       </ContentBlock>
