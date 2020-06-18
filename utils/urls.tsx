@@ -26,3 +26,17 @@ export const getURL = (route: { path: string; params: object }) => {
   }
   return url;
 };
+
+export const buildFinalUrl = (
+  filterName: string,
+  label: string,
+  urlMapping?: { name: string; id: string }
+): string => {
+  return getURL({
+    path: process.env.NEXT_PUBLIC_RESOURCE_URL,
+    params: {
+      "filter.about.@type": "Policy",
+      [filterName]: [urlMapping ? urlMapping[label] : label],
+    },
+  });
+};

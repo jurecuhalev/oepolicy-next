@@ -7,6 +7,7 @@ import IntroPageMd, {
   frontMatter as introPage,
 } from "../../docs/201-intro-explore.mdx";
 import DataPageMd, { frontMatter as dataPage } from "../../docs/202-data.mdx";
+import TypePageMd, { frontMatter as typePage } from "../../docs/203-type.mdx";
 
 import ContentBlock from "../../components/ContentBlock";
 import dynamic from "next/dynamic";
@@ -16,6 +17,14 @@ import LoaderPie from "../../components/LoaderPie";
 const PieChartPoliciesByFocus = dynamic(
   // @ts-ignore
   import("../../components/PieChart-ByFocus"),
+  {
+    ssr: false,
+  }
+);
+
+const PieChartPoliciesByType = dynamic(
+  // @ts-ignore
+  import("../../components/PieChart-ByType"),
   {
     ssr: false,
   }
@@ -113,6 +122,14 @@ const ExplorePage: FunctionComponent = () => {
       <ContentBlock {...introPage}>
         <IntroPageMd />
       </ContentBlock>
+
+      <div className="bg-gray">
+        {!data ? <LoaderPie /> : <PieChartPoliciesByType items={data.member} />}
+      </div>
+      <ContentBlock noTopPadding={true} {...typePage}>
+        <TypePageMd />
+      </ContentBlock>
+
       <div className="bg-gray">
         {!data ? (
           <LoaderPie />

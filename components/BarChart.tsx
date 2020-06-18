@@ -1,27 +1,12 @@
 import Plot from "react-plotly.js";
-import { d3 } from "plotly.js";
 import React, { FunctionComponent, useRef } from "react";
-import { getURL } from "../utils/urls";
+import { buildFinalUrl } from "../utils/urls";
 
 // https://stackoverflow.com/a/51506718/141200
 const wrap = (s: string, w: number): string =>
   s.replace(new RegExp(`(?![^\\n]{1,${w}}$)([^\\n]{1,${w}})\\s`, "g"), "$1\n");
 
 const sanitizeLabel = (s: string): string => s.replace(/<[^>]+>/g, " ");
-
-const buildFinalUrl = (
-  filterName: string,
-  label: string,
-  urlMapping?: { name: string; id: string }
-): string => {
-  return getURL({
-    path: process.env.NEXT_PUBLIC_RESOURCE_URL,
-    params: {
-      "filter.about.@type": "Policy",
-      [filterName]: [urlMapping ? urlMapping[label] : label],
-    },
-  });
-};
 
 const BarChart: FunctionComponent<{
   x: number[];

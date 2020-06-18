@@ -55,8 +55,12 @@
   font-size: 24px;
   line-height: 36px;
 
-  a:hover {
+  a {
     @apply underline;
+  }
+
+  a:hover {
+    @apply text-pink;
   }
 
   p {
