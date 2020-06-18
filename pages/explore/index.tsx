@@ -78,13 +78,14 @@ const BarChartStackedRepository = dynamic(
   }
 );
 
-const MapDisplay = dynamic(
-  // @ts-ignore
-  import("../../components/MapDisplay"),
-  {
-    ssr: false,
-  }
-);
+// const MapDisplay = dynamic(
+//   // @ts-ignore
+//   import("../../components/MapDisplay"),
+//   {
+//     ssr: false,
+//   }
+// );
+
 const ExplorePage: FunctionComponent = () => {
   const url =
     "https://oerworldmap.org/resource.json?q=about.@type:Policy&sort=dateCreated:DESC&size=500";
