@@ -15,6 +15,8 @@ const BarChartPoliciesByScope: FunctionComponent<{ items: any[] }> = ({
       fieldName="filter.about.scope.@id"
       title="OE Policies by Scope"
       urlMapping={urlMapping(items, "scope")}
+      bgColor="white"
+      sortData={true}
     />
   );
 };

@@ -6,11 +6,16 @@ import fetcher from "../../utils/fetcher";
 import IntroPageMd, {
   frontMatter as introPage,
 } from "../../docs/201-intro-explore.mdx";
-import DataPageMd, { frontMatter as dataPage } from "../../docs/202-data.mdx";
 import TypePageMd, { frontMatter as typePage } from "../../docs/203-type.mdx";
 import PoliciesPageMd, {
   frontMatter as policiesPage,
-} from "../../docs/303-policies.mdx";
+} from "../../docs/204-policies.mdx";
+import ScopePageMd, {
+  frontMatter as scopePage,
+} from "../../docs/205-scope.mdx";
+import LevelPageMd, {
+  frontMatter as levelPage,
+} from "../../docs/206-level.mdx";
 
 import ContentBlock from "../../components/ContentBlock";
 import dynamic from "next/dynamic";
@@ -66,21 +71,21 @@ const BarChartPoliciesByScope = dynamic(
   }
 );
 
-const BarChartPoliciesByCountry = dynamic(
-  // @ts-ignore
-  import("../../components/BarChart-ByCountry"),
-  {
-    ssr: false,
-  }
-);
+// const BarChartPoliciesByCountry = dynamic(
+//   // @ts-ignore
+//   import("../../components/BarChart-ByCountry"),
+//   {
+//     ssr: false,
+//   }
+// );
 
-const BarChartStackedRepository = dynamic(
-  // @ts-ignore
-  import("../../components/BarChart-StackedRepository"),
-  {
-    ssr: false,
-  }
-);
+// const BarChartStackedRepository = dynamic(
+//   // @ts-ignore
+//   import("../../components/BarChart-StackedRepository"),
+//   {
+//     ssr: false,
+//   }
+// );
 
 // const MapDisplay = dynamic(
 //   // @ts-ignore
@@ -95,7 +100,7 @@ const ExplorePage: FunctionComponent = () => {
     "https://oerworldmap.org/resource.json?q=about.@type:Policy&sort=dateCreated:DESC&size=500";
 
   const servicesUrl =
-    "https://oerworldmap.org/resource.json?field=about.location.address.addressCountry&filter.about.@type=%22Service%22&filter.about.additionalType.@id=%5B%22https%3A%2F%2Foerworldmap.org%2Fassets%2Fjson%2Fservices.json%23repository%22%5D&sort=dateCreated:DESC&size=500";
+    "https://oerworldmap.org/resource.json?field=feature.properties.location.address.addressRegion&filter.about.@type=%22Service%22&filter.about.additionalType.@id=%5B%22https%3A%2F%2Foerworldmap.org%2Fassets%2Fjson%2Fservices.json%23referatory%22%2C%22https%3A%2F%2Foerworldmap.org%2Fassets%2Fjson%2Fservices.json%23repository%22%5D&sort=dateCreated:DESC&size=500";
 
   const { data } = useSWR(url, fetcher, {
     revalidateOnFocus: false,
@@ -154,6 +159,21 @@ const ExplorePage: FunctionComponent = () => {
           <BarChartPoliciesByLevel items={data.member} />
         )}
       </div>
+      <ContentBlock noTopPadding={true} {...levelPage}>
+        <LevelPageMd />
+      </ContentBlock>
+
+      <div className="bg-white">
+        {!data ? (
+          <LoaderPie />
+        ) : (
+          <BarChartPoliciesByScope items={data.member} />
+        )}
+      </div>
+      <ContentBlock noTopPadding={true} {...scopePage}>
+        <ScopePageMd />
+      </ContentBlock>
+
       <div className="bg-gray">
         {!data ? (
           <LoaderPie />
@@ -161,30 +181,23 @@ const ExplorePage: FunctionComponent = () => {
           <BarChartPoliciesBySector items={data.member} />
         )}
       </div>
-      <div className="bg-gray">
-        {!data ? (
-          <LoaderPie />
-        ) : (
-          <BarChartPoliciesByScope items={data.member} />
-        )}
-      </div>
-      <div className="bg-gray">
-        {!data ? (
-          <LoaderPie />
-        ) : (
-          <BarChartPoliciesByCountry items={data.member} />
-        )}
-      </div>
-      <div className="bg-gray">
-        {!data || !services ? (
-          <LoaderPie />
-        ) : (
-          <BarChartStackedRepository
-            items={data.member}
-            services={services.member}
-          />
-        )}
-      </div>
+      {/*<div className="bg-gray">*/}
+      {/*  {!data ? (*/}
+      {/*    <LoaderPie />*/}
+      {/*  ) : (*/}
+      {/*    <BarChartPoliciesByCountry items={data.member} />*/}
+      {/*  )}*/}
+      {/*</div>*/}
+      {/*<div className="bg-gray">*/}
+      {/*  {!data || !services ? (*/}
+      {/*    <LoaderPie />*/}
+      {/*  ) : (*/}
+      {/*    <BarChartStackedRepository*/}
+      {/*      items={data.member}*/}
+      {/*      services={services.member}*/}
+      {/*    />*/}
+      {/*  )}*/}
+      {/*</div>*/}
       <div className="bg-gray">
         {!data ? (
           <LoaderPie />
@@ -192,9 +205,6 @@ const ExplorePage: FunctionComponent = () => {
           <PieChartPoliciesByFocus items={data.member} />
         )}
       </div>
-      <ContentBlock {...dataPage}>
-        <DataPageMd />
-      </ContentBlock>
       <div className="bg-gray">
         {!data ? (
           <LoaderPie />

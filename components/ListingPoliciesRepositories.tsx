@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { countBy, toPairs, mergeWith, sortBy, fromPairs } from "lodash";
-import countries from "../json/iso3166-1-alpha-2.json";
+import { getCountryFromItem } from "../utils/charts";
 
 const ListingPoliciesByType: FunctionComponent<{
   items: any[];
@@ -8,27 +8,17 @@ const ListingPoliciesByType: FunctionComponent<{
 }> = ({ items, services }) => {
   const servicesData = countBy(
     services.flatMap((item) => {
-      if (item?.about?.location) {
-        const location = item.about.location;
-        return location.map((loc) => {
-          return countries[loc.address.addressCountry];
-        });
-      }
-      return [];
+      return getCountryFromItem(item);
     })
   );
+  delete servicesData.undefined;
 
   const data = countBy(
     items.flatMap((item) => {
-      if (item.about?.location) {
-        const location = item.about.location;
-        return location.map((loc) => {
-          return countries[loc.address.addressCountry];
-        });
-      }
-      return [];
+      return getCountryFromItem(item);
     })
   );
+  delete data.undefined;
 
   let list1 = fromPairs(
     toPairs(data).map((i) => {
@@ -50,10 +40,11 @@ const ListingPoliciesByType: FunctionComponent<{
       <h1 className="h2 mb-15">
         OE Policies and Repositories by countries/regions
       </h1>
-      <div className="text-lg text-right mb-6">
-        <span className="inline-block w-6 h-6 bg-blue mr-3"></span>
-        <span className="mr-8">Number of policies</span>
-        <span className="inline-block w-6 h-6 bg-orange mr-3"></span>
+      <div className="text-lg left mb-6 leading-none">
+        <span className="inline-block w-6 h-6 bg-blue mr-3 -mb-1" />
+        <span className="mr-8">Number of OE policies</span>
+        <br />
+        <span className="inline-block w-6 h-6 bg-orange mr-3 -mb-1" />
         Number of repositories, referatories and related services
       </div>
 

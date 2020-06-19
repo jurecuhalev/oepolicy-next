@@ -2,7 +2,7 @@ import Plot from "react-plotly.js";
 import React, { FunctionComponent } from "react";
 import { piecolors } from "../utils/colors";
 import { buildFinalUrl } from "../utils/urls";
-import { countBy, toPairs, sortBy } from "lodash";
+import { toPairs, sortBy } from "lodash";
 
 const PieChart: FunctionComponent<{
   data: object;

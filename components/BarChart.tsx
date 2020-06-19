@@ -15,7 +15,9 @@ const BarChart: FunctionComponent<{
   fieldName: string;
   title: string;
   urlMapping?: { name: string; id: string };
-}> = ({ x, y, text, fieldName, title, urlMapping }) => {
+  bgColor?: "white" | "gray";
+  sortData: boolean;
+}> = ({ x, y, text, fieldName, title, urlMapping, bgColor, sortData }) => {
   const plotRef = useRef(null);
 
   // Plotly doesn't support word wrap on legend items, so we manually add <br /> line breaks
@@ -30,6 +32,16 @@ const BarChart: FunctionComponent<{
       return false;
     }
   }
+
+  const transforms = sortData
+    ? [
+        {
+          type: "sort",
+          target: "x",
+          order: "ascending",
+        },
+      ]
+    : [];
 
   return (
     <div className="container py-10">
@@ -49,19 +61,13 @@ const BarChart: FunctionComponent<{
             marker: {
               color: "#3E55CD",
             },
-            transforms: [
-              {
-                type: "sort",
-                target: "x",
-                order: "ascending",
-              },
-            ],
+            transforms: transforms,
           },
         ]}
         layout={{
           autosize: true,
-          plot_bgcolor: "#EEEEEE",
-          paper_bgcolor: "#EEEEEE",
+          plot_bgcolor: bgColor === "white" ? "#FFFFFF" : "#EEEEEE",
+          paper_bgcolor: bgColor === "white" ? "#FFFFFF" : "#EEEEEE",
           title: {
             text: `<b>${title}</b>`,
             font: {
