@@ -25,6 +25,7 @@ const BarChartPoliciesByCountry: FunctionComponent<{ items: any[] }> = ({
       text={Object.values(data).map(String)}
       fieldName="about.location.address.addressCountry"
       title="OE Policies by Country"
+      sortData={true}
     />
   );
 };

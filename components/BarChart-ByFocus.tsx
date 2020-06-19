@@ -14,6 +14,7 @@ const BarChartPoliciesByFocus: FunctionComponent<{ items: any[] }> = ({
       text={Object.values(data).map(String)}
       fieldName="focus"
       title="OE Policies by Focus"
+      sortData={true}
     />
   );
 };
