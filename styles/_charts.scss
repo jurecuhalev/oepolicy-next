@@ -1,0 +1,22 @@
+.content .sortable-stats {
+  @apply list-none mb-2 p-0 pb-10 text-xl leading-loose;
+  column-fill: auto;
+  break-inside: avoid;
+  page-break-inside: avoid;
+
+  column-count: 1;
+
+  @screen md {
+    column-count: 2;
+  }
+
+  @screen lg {
+    column-count: 3;
+  }
+}
+
+.content .sortable-stats .sortable-stats__number {
+  @apply inline-block text-center text-white;
+
+  min-width: 40px;
+}

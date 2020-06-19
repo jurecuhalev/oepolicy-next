@@ -1,4 +1,4 @@
-const defaultTheme = require("tailwindcss/defaultTheme")
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   theme: {
@@ -22,6 +22,7 @@ module.exports = {
       lineHeight: {
         tight: "1.166666667",
       },
+      minWidth: {},
     },
     container: {
       center: true,
@@ -34,11 +35,11 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [require("tailwindcss-multi-column")()],
   purge: [
     "./pages/**/*.js",
     "./pages/**/*.tsx",
     "./components/**/*.js",
     "./components/**/*.tsx",
   ],
-}
+};
