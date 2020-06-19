@@ -38,8 +38,8 @@ const PieChart: FunctionComponent<{
         style={{ width: "100%", minHeight: "600px" }}
         data={[
           {
-            values: sortedData.map((v) => v[1]),
-            labels: sortedData.map((v) => v[0]),
+            values: sortedData.map(([_, v]) => v),
+            labels: sortedData.map(([k, _]) => k),
             type: "pie",
             automargin: true,
             sort: false,
@@ -57,10 +57,10 @@ const PieChart: FunctionComponent<{
         ]}
         layout={{
           autosize: true,
-          plot_bgcolor: "#EEEEEE",
-          paper_bgcolor: "#EEEEEE",
+          plot_bgcolor: "transparent",
+          paper_bgcolor: "transparent",
           title: {
-            text: "<b>OE Policies by Type</b>",
+            text: `<b>${title}</b>`,
             font: {
               family: "Courier Prime Sans, serif",
               size: 36,

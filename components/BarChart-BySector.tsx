@@ -12,8 +12,10 @@ const BarChartPoliciesBySector: FunctionComponent<{ items: any[] }> = ({
       y={Object.keys(data)}
       text={Object.values(data).map(String)}
       fieldName="filter.about.primarySector.@id"
-      title="OE Policies by Primary Educational Sector"
+      title="OE Policies by Educational Sector"
       urlMapping={urlMapping(items, "primarySector")}
+      bgColor="gray"
+      sortData={true}
     />
   );
 };

@@ -60,7 +60,9 @@ const Layout: FunctionComponent<Props> = ({ children, title, hero }) => (
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-2">
         <div className="order-2 md:order-1">
           <ul className="font-bold">
-            <li className="mb-4">Open Education Policy Hub</li>
+            <li className="mb-4">
+              <Link href="/">Open Education Policy Hub</Link>
+            </li>
             <li>
               <Link href="/explore">
                 <a>Collection &amp; Statistics</a>

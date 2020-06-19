@@ -16,6 +16,12 @@ import ScopePageMd, {
 import LevelPageMd, {
   frontMatter as levelPage,
 } from "../../docs/206-level.mdx";
+import SectorPageMd, {
+  frontMatter as sectorPage,
+} from "../../docs/207-sector.mdx";
+import FocusPageMd, {
+  frontMatter as focusPage,
+} from "../../docs/208-focus.mdx";
 
 import ContentBlock from "../../components/ContentBlock";
 import dynamic from "next/dynamic";
@@ -181,6 +187,10 @@ const ExplorePage: FunctionComponent = () => {
           <BarChartPoliciesBySector items={data.member} />
         )}
       </div>
+      <ContentBlock noTopPadding={true} {...sectorPage}>
+        <SectorPageMd />
+      </ContentBlock>
+
       {/*<div className="bg-gray">*/}
       {/*  {!data ? (*/}
       {/*    <LoaderPie />*/}
@@ -198,28 +208,16 @@ const ExplorePage: FunctionComponent = () => {
       {/*    />*/}
       {/*  )}*/}
       {/*</div>*/}
-      <div className="bg-gray">
+      <div className="bg-white">
         {!data ? (
           <LoaderPie />
         ) : (
           <PieChartPoliciesByFocus items={data.member} />
         )}
       </div>
-      <div className="bg-gray">
-        {!data ? (
-          <LoaderPie />
-        ) : (
-          <BarChartPoliciesByFocus items={data.member} />
-        )}
-
-        <div className="container content pb-10">
-          <p>
-            OER World Map currently tracks 198 policies. This is a short extract
-            of a few ways to look at the data so that it can support you in
-            creating your policy.
-          </p>
-        </div>
-      </div>
+      <ContentBlock noTopPadding={true} {...focusPage}>
+        <FocusPageMd />
+      </ContentBlock>
     </Layout>
   );
 };
