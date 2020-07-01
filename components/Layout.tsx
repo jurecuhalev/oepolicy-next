@@ -61,7 +61,9 @@ const Layout: FunctionComponent<Props> = ({ children, title, hero }) => (
         <div className="order-2 md:order-1">
           <ul className="font-bold">
             <li className="mb-4">
-              <Link href="/">Open Education Policy Hub</Link>
+              <Link href="/">
+                <a>Open Education Policy Hub</a>
+              </Link>
             </li>
             <li>
               <Link href="/explore">

@@ -1,4 +1,4 @@
-import { countBy, uniqBy } from "lodash";
+import { countBy, uniqBy, uniq } from "lodash";
 import countries from "../json/iso3166-1-alpha-2.json";
 
 export const urlMapping = (items: any[], field: string): any => {
@@ -41,9 +41,20 @@ export const dataSimple = (
 };
 
 export const getCountryFromItem = (item: any): any => {
+  if (item.feature?.properties?.location?.length) {
+    return uniq(
+      item.feature.properties.location.map(
+        (loc) => countries[loc.address.addressCountry]
+      )
+    );
+  }
   if (item?.feature?.properties?.location?.address?.addressCountry) {
     return countries[item.feature.properties.location.address.addressCountry];
   } else if (item.about?.location) {
-    return countries[item.about.location[0].address.addressCountry];
+    return uniq(
+      item.about.location
+        .map((loc) => countries[loc.address.addressCountry])
+        .filter((country) => country !== undefined)
+    );
   }
 };
