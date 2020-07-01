@@ -1,4 +1,4 @@
-import { countBy, uniqBy, uniq } from "lodash";
+import { countBy, uniqBy, uniq, invert } from "lodash";
 import countries from "../json/iso3166-1-alpha-2.json";
 
 export const urlMapping = (items: any[], field: string): any => {
@@ -57,4 +57,9 @@ export const getCountryFromItem = (item: any): any => {
         .filter((country) => country !== undefined)
     );
   }
+};
+
+const invertedCountries = invert(countries);
+export const getCountryCodeFromCountry = (key: string): any => {
+  return invertedCountries[key];
 };

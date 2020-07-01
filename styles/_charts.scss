@@ -16,7 +16,7 @@
 }
 
 .content .sortable-stats .sortable-stats__number {
-  @apply inline-block text-center text-white;
+  @apply inline-block text-center text-white no-underline;
 
   min-width: 40px;
 }

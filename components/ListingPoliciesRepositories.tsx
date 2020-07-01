@@ -1,6 +1,16 @@
 import React, { FunctionComponent } from "react";
 import { countBy, toPairs, mergeWith, sortBy, fromPairs } from "lodash";
-import { getCountryFromItem } from "../utils/charts";
+import { getCountryCodeFromCountry, getCountryFromItem } from "../utils/charts";
+
+const policiesLink = (country: string): string => {
+  const code = getCountryCodeFromCountry(country);
+  return `https://oerworldmap.org/resource/?filter.about.%40type=%22Policy%22&filter.feature.properties.location.address.addressCountry=%5B%22${code}%22%5D`;
+};
+
+const servicesLink = (country: string): string => {
+  const code = getCountryCodeFromCountry(country);
+  return `https://oerworldmap.org/resource/?filter.about.%40type=%22Service%22&filter.about.additionalType.%40id=%5B%22https%3A%2F%2Foerworldmap.org%2Fassets%2Fjson%2Fservices.json%23referatory%22%2C%22https%3A%2F%2Foerworldmap.org%2Fassets%2Fjson%2Fservices.json%23repository%22%5D&filter.feature.properties.location.address.addressCountry=%5B%22${code}%22%5D`;
+};
 
 const ListingPoliciesByType: FunctionComponent<{
   items: any[];
@@ -19,6 +29,14 @@ const ListingPoliciesByType: FunctionComponent<{
     })
   );
   delete data.undefined;
+
+  // Quick and dirty debug to make it easier to figure out the difference from OER World Map
+  // items.forEach((item) => {
+  //   let country = getCountryFromItem(item);
+  //   if (country == "Fiji") {
+  //     console.log(item);
+  //   }
+  // });
 
   let list1 = fromPairs(
     toPairs(data).map((i) => {
@@ -71,12 +89,26 @@ const StatsItem: FunctionComponent<{
   <li className="flex-inline items-center">
     <div className="flex">
       {policies ? (
-        <span className="sortable-stats__number bg-blue">{policies}</span>
+        <a
+          href={policiesLink(name)}
+          className="sortable-stats__number bg-blue"
+          target="_blank"
+          rel="noopener"
+        >
+          {policies}
+        </a>
       ) : (
         <span className="sortable-stats__number" />
       )}
       {services ? (
-        <span className="sortable-stats__number bg-orange">{services}</span>
+        <a
+          href={servicesLink(name)}
+          className="sortable-stats__number bg-orange"
+          target="_blank"
+          rel="noopener"
+        >
+          {services}
+        </a>
       ) : (
         <span className="sortable-stats__number" />
       )}
