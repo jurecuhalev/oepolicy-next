@@ -1,16 +1,14 @@
 import React, { FunctionComponent } from "react";
-import Layout from "../../components/Layout";
+import Layout from "../components/Layout";
 
-import ContentBlock from "../../components/ContentBlock";
-import Hero from "../../components/Hero";
+import ContentBlock from "../components/ContentBlock";
+import Hero from "../components/Hero";
 
-import ToolsPageMd, {
-  frontMatter as toolsPage,
-} from "../../docs/301-tools.mdx";
+import ToolsPageMd, { frontMatter as toolsPage } from "../docs/301-tools.mdx";
 import ReadingsPageMd, {
   frontMatter as readingsPage,
-} from "../../docs/302-readings.mdx";
-import GraphicOrangeTools from "../../components/GraphicOrangeTools";
+} from "../docs/302-readings.mdx";
+import GraphicOrangeTools from "../components/GraphicOrangeTools";
 
 const ToolsPage: FunctionComponent = () => {
   return (
