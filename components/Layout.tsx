@@ -76,7 +76,7 @@ const Layout: FunctionComponent<Props> = ({ children, title, hero }) => (
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/about">
                 <a>About &amp; Team</a>
               </Link>
             </li>
