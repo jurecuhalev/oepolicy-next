@@ -78,6 +78,10 @@ button.button {
     @apply font-sans-source font-semibold;
   }
 
+  a:hover {
+    @apply text-pink;
+  }
+
   a::before {
     content: "";
     position: absolute;
@@ -88,5 +92,9 @@ button.button {
     background: url("/img/arrow.svg") no-repeat;
 
     @apply font-sans font-semibold;
+  }
+
+  a:hover::before {
+    background: url("/img/arrow-pink.svg") no-repeat;
   }
 }
