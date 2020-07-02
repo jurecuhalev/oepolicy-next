@@ -20,6 +20,7 @@
     "react": "16.13.1",
     "react-content-loader": "^5.0.4",
     "react-dom": "16.13.1",
+    "react-dropdown": "^1.7.0",
     "react-map-gl": "^5.2.5",
     "react-plotly.js": "^2.4.0",
     "react-spring": "^8.0.27",

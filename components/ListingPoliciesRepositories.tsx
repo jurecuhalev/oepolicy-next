@@ -1,6 +1,7 @@
-import React, { FunctionComponent } from "react";
-import { countBy, toPairs, mergeWith, sortBy, fromPairs } from "lodash";
+import React, { FunctionComponent, useEffect, useState } from "react";
+import { countBy, toPairs, mergeWith, orderBy, fromPairs, map } from "lodash";
 import { getCountryCodeFromCountry, getCountryFromItem } from "../utils/charts";
+import Dropdown from "react-dropdown";
 
 const policiesLink = (country: string): string => {
   const code = getCountryCodeFromCountry(country);
@@ -16,6 +17,8 @@ const ListingPoliciesByType: FunctionComponent<{
   items: any[];
   services: any[];
 }> = ({ items, services }) => {
+  const dropdownOptions = ["Country", "Policies", "Repositories"];
+
   const servicesData = countBy(
     services.flatMap((item) => {
       return getCountryFromItem(item);
@@ -49,26 +52,77 @@ const ListingPoliciesByType: FunctionComponent<{
     })
   );
   const mergedData = mergeWith(list1, list2);
-  const sortedData = sortBy(toPairs(mergedData), (o) => {
-    return o[0];
-  });
+
+  const [sortedData, setSortedData] = useState();
+  const [dropdownValue, setDropdownValue] = useState(dropdownOptions[0]);
+
+  useEffect(() => {
+    let internalSorted;
+    console.log(dropdownValue);
+    console.log(toPairs(mergedData));
+    if (dropdownValue === "Policies") {
+      internalSorted = orderBy(
+        toPairs(mergedData),
+        [
+          ([name, { policies, services }]) => policies || 0,
+          ([name, { policies, services }]) => services || 0,
+          ([name, { policies, services }]) => name,
+        ],
+        ["desc", "desc", "asc"]
+      );
+    } else if (dropdownValue === "Repositories") {
+      internalSorted = orderBy(
+        toPairs(mergedData),
+        [
+          ([name, { policies, services }]) => services || 0,
+          ([name, { policies, services }]) => policies || 0,
+          ([name, { policies, services }]) => name,
+        ],
+        ["desc", "desc", "asc"]
+      );
+    } else {
+      internalSorted = orderBy(
+        toPairs(mergedData),
+        [
+          ([name, { policies, services }]) => name,
+          ([name, { policies, services }]) => policies || 0,
+          ([name, { policies, services }]) => services || 0,
+        ],
+        ["asc", "desc", "desc"]
+      );
+    }
+    setSortedData(internalSorted);
+  }, [dropdownValue]);
 
   return (
     <div className="pt-30 container content">
       <h1 className="h2 mb-15">
         OE Policies and Repositories by countries/regions
       </h1>
-      <div className="text-lg left mb-6 leading-none">
-        <span className="inline-block w-6 h-6 bg-blue mr-3 -mb-1" />
-        <span className="mr-8">Number of OE policies</span>
-        <br />
-        <span className="inline-block w-6 h-6 bg-orange mr-3 -mb-1" />
-        Number of repositories, referatories and related services
+      <div className="flex md:justify-between flex-col md:flex-row">
+        <div className="text-lg left mb-6 leading-none">
+          <span className="inline-block w-6 h-6 bg-blue mr-3 -mb-1" />
+          <span className="mr-8">Number of OE policies</span>
+          <br />
+          <span className="inline-block w-6 h-6 bg-orange mr-3 -mb-1" />
+          Number of repositories, referatories and related services
+        </div>
+        <div className="flex md:block mb-4">
+          <Dropdown
+            className="inline-block text-base leading-tight md:float-right order-2"
+            options={dropdownOptions}
+            value={dropdownValue}
+            onChange={(val) => {
+              setDropdownValue(val.value);
+            }}
+          />
+          <span className="text-lg mr-2 md:float-right order-1">Sort by</span>
+        </div>
       </div>
 
       <ul className="sortable-stats">
         {sortedData &&
-          sortedData.map(([name, { policies, services }]) => (
+          map(sortedData, ([name, { policies, services }]) => (
             <StatsItem
               key={name}
               name={name}
