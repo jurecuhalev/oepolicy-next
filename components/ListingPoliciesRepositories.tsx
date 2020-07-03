@@ -58,8 +58,6 @@ const ListingPoliciesByType: FunctionComponent<{
 
   useEffect(() => {
     let internalSorted;
-    console.log(dropdownValue);
-    console.log(toPairs(mergedData));
     if (dropdownValue === "Policies") {
       internalSorted = orderBy(
         toPairs(mergedData),
