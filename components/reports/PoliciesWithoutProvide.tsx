@@ -7,9 +7,10 @@ const PoliciesWithoutPublisher: FunctionComponent<{
     if (!item.about?.publisher) {
       return item;
     }
-    // if (item["@id"] === "urn:uuid:09ed0707-bf91-46dc-a253-34f4ff39eb01.about") {
-    //   console.log(item);
-    // }
+
+    if (item.about?.publisher && !item.about.publisher[0].location) {
+      return item;
+    }
   });
 
   return (

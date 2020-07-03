@@ -26,7 +26,7 @@ const ReportsPage: FunctionComponent = () => {
     <Layout title="Internal data reports" hero={<></>}>
       <div className="container content py-30">
         <h1 className="bold mb-6">
-          Policies without Provider or Provider doesn't have location
+          Policies without Publisher or Publisher doesn't have location
         </h1>
 
         {data && <PoliciesWithoutPublisher items={data.member} />}
