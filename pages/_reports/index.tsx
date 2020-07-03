@@ -4,6 +4,7 @@ import useSWR from "swr";
 import fetcher from "../../utils/fetcher";
 import ContentBlock from "../../components/ContentBlock";
 import PoliciesWithoutPublisher from "../../components/reports/PoliciesWithoutPublisher";
+import ServicesWithoutLocation from "../../components/reports/ServicesWithoutLocation";
 
 const ReportsPage: FunctionComponent = () => {
   const url =
@@ -26,6 +27,10 @@ const ReportsPage: FunctionComponent = () => {
     <Layout title="Internal data reports" hero={<></>}>
       <div className="container content py-30">
         {data && <PoliciesWithoutPublisher items={data.member} />}
+      </div>
+
+      <div className="container content py-30">
+        {services && <ServicesWithoutLocation services={services.member} />}
       </div>
     </Layout>
   );

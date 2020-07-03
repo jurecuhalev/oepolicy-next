@@ -1,24 +1,17 @@
 import React, { FunctionComponent } from "react";
 
-const PoliciesWithoutPublisher: FunctionComponent<{
-  items: any[];
-}> = ({ items }) => {
-  const noPublisher = items.filter((item) => {
-    if (!item.about?.publisher) {
-      return item;
-    }
-
-    if (item.about?.publisher && !item.about.publisher[0].location) {
+const ServicesWithoutLocation: FunctionComponent<{
+  services: any[];
+}> = ({ services }) => {
+  const noLocation = services.filter((item) => {
+    if (!item?.feature?.properties?.location) {
       return item;
     }
   });
 
   return (
     <>
-      <h1 className="bold mb-6">
-        Policies without Publisher or Publisher doesn't have location
-      </h1>
-
+      <h1 className="bold mb-6">Services without location or a Publisher</h1>
       <table>
         <thead>
           <tr>
@@ -26,8 +19,8 @@ const PoliciesWithoutPublisher: FunctionComponent<{
           </tr>
         </thead>
         <tbody>
-          {noPublisher.map((item) => (
-            <tr key={item.about["@id"]}>
+          {noLocation.map((item) => (
+            <tr>
               <td>
                 <a
                   href={`https://oerworldmap.org/resource/${encodeURIComponent(
@@ -46,4 +39,4 @@ const PoliciesWithoutPublisher: FunctionComponent<{
   );
 };
 
-export default PoliciesWithoutPublisher;
+export default ServicesWithoutLocation;
