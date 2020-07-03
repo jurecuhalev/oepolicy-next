@@ -2,7 +2,7 @@ import { AppProps } from "next/app";
 import React from "react";
 
 // import "mapbox-gl/dist/mapbox-gl.css";
-import "react-dropdown/style.css";
+import "react-dropdown-now/style.css";
 import "../styles/style.scss";
 
 function OEPolicyHubApp({ Component, pageProps }: AppProps) {

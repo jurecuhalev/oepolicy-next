@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { countBy, toPairs, mergeWith, orderBy, fromPairs, map } from "lodash";
 import { getCountryCodeFromCountry, getCountryFromItem } from "../utils/charts";
-import Dropdown from "react-dropdown";
+import Dropdown from "react-dropdown-now";
 
 const policiesLink = (country: string): string => {
   const code = getCountryCodeFromCountry(country);
