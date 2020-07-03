@@ -3,7 +3,7 @@ import Layout from "../../components/Layout";
 import useSWR from "swr";
 import fetcher from "../../utils/fetcher";
 import ContentBlock from "../../components/ContentBlock";
-import PoliciesWithoutPublisher from "../../components/reports/PoliciesWithoutProvide";
+import PoliciesWithoutPublisher from "../../components/reports/PoliciesWithoutPublisher";
 
 const ReportsPage: FunctionComponent = () => {
   const url =
@@ -25,10 +25,6 @@ const ReportsPage: FunctionComponent = () => {
   return (
     <Layout title="Internal data reports" hero={<></>}>
       <div className="container content py-30">
-        <h1 className="bold mb-6">
-          Policies without Publisher or Publisher doesn't have location
-        </h1>
-
         {data && <PoliciesWithoutPublisher items={data.member} />}
       </div>
     </Layout>
