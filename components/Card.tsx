@@ -1,13 +1,13 @@
-import React, { FunctionComponent } from "react"
-import URL from "url"
+import React, { FunctionComponent } from "react";
+import URL from "url";
 
 interface ICard {
-  type: "tool" | "paper"
-  author: string
-  title: string
-  description: string
-  href: string
-  maphref: string
+  type: "tool" | "paper";
+  author: string;
+  title: string;
+  description: string;
+  href: string;
+  maphref: string;
 }
 
 const Card: FunctionComponent<ICard> = ({
@@ -19,9 +19,6 @@ const Card: FunctionComponent<ICard> = ({
   maphref,
 }) => (
   <article className="bg-white rounded border-blue border px-4 py-3 card font-sans-source flex flex-col">
-    <div className="italic mb-1">
-      {type === "tool" ? "Authority tool" : author}
-    </div>
     <h1 className="font-bold mb-1">{title}</h1>
     <div className="card__description flex-grow">
       {type === "tool" && <div>{author}</div>}
@@ -49,6 +46,6 @@ const Card: FunctionComponent<ICard> = ({
       )}
     </div>
   </article>
-)
+);
 
-export default Card
+export default Card;
