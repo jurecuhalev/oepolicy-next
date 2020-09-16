@@ -43,13 +43,22 @@ const Layout: FunctionComponent<Props> = ({ children, title, hero }) => (
         <div className="flex justify-end flex-col md:flex-row">
           <div className="flex-shrink mb-2 md:mb-0">
             <Link href="/explore">
-              <a>Collection &amp; Statistics</a>
+              <a>Statistics</a>
             </Link>
           </div>
           <div className="flex-shrink md:ml-8">
             <Link href="/tools">
-              <a>Tools &amp; Resources</a>
+              <a>Resources</a>
             </Link>
+          </div>
+          <div className="flex-shrink md:ml-8">
+            <a
+              href="https://oerworldmap.org/resource/?filter.about.%40type=%22Policy%22"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Registry
+            </a>
           </div>
         </div>
       </div>
