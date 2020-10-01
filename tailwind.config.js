@@ -41,5 +41,6 @@ module.exports = {
     "./pages/**/*.tsx",
     "./components/**/*.js",
     "./components/**/*.tsx",
+    "./docs/**/*.mdx",
   ],
 };
