@@ -40,13 +40,13 @@ const Layout: FunctionComponent<Props> = ({ children, title, hero }) => (
             </a>
           </Link>
         </div>
-        <div className="flex justify-end flex-col md:flex-row">
-          <div className="flex-shrink mb-2 md:mb-0">
+        <div className="flex justify-between md:justify-end flex-row">
+          <div className="flex-shrink mb-0">
             <Link href="/explore">
               <a>Statistics</a>
             </Link>
           </div>
-          <div className="flex-shrink md:ml-8">
+          <div className="flex-shrink mb-0 md:ml-8">
             <Link href="/tools">
               <a>Resources</a>
             </Link>

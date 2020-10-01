@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 
 const HeroHome: FunctionComponent = () => (
-  <div className="hero-home">
+  <div className="hero-home py-10 md:py-0">
     <div className="container flex flex-col justify-center">
       <h1 className="h3 mb-5">Open Education Policy Hub</h1>
       <h2 className="h1 mb-15">Shaping Open Futures in Education Together</h2>
