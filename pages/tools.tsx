@@ -16,7 +16,7 @@ const ToolsPage: FunctionComponent = () => {
       title="Tools &amp; Resources for creating Open Education Policies"
       hero={
         <Hero background="pink">
-          <h1 className="text-5xl font-sans">
+          <h1 className="text-4xl font-sans">
             Tools &amp; Resources for creating{" "}
             <br className="hidden md:block" />
             <b>Open Education Policies</b>

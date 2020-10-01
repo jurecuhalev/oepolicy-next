@@ -11,7 +11,7 @@ const ImprintPage: FunctionComponent = () => (
     title="Who we are & What we do"
     hero={
       <Hero background="orange">
-        <h1 className="text-5xl font-sans">
+        <h1 className="text-4xl font-sans">
           <b>What</b> we do &amp; <b>Who</b> we are
         </h1>
       </Hero>

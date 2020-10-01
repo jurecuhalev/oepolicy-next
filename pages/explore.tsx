@@ -117,7 +117,7 @@ const ExplorePage: FunctionComponent = () => {
       title="Explore OE Policies"
       hero={
         <Hero background="orange">
-          <h1 className="text-5xl font-sans">
+          <h1 className="text-4xl font-sans">
             Explore our collection of <br className="hidden md:block" />
             <b>Open Education Policies</b>
           </h1>
