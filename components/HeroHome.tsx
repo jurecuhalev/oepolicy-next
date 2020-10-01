@@ -7,7 +7,7 @@ const HeroHome: FunctionComponent = () => (
       <h2 className="h1 mb-15">Shaping Open Futures in Education Together</h2>
       <p className="h3">
         A project by{" "}
-        <a className="underline hover:text-pink" href="https://oerworldmap.org">
+        <a className="font-bold hover:text-pink" href="https://oerworldmap.org">
           OER World Map
         </a>
       </p>
