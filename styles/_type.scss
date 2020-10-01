@@ -34,6 +34,11 @@
   line-height: 1.33333333333;
 
   @screen md {
+    font-size: 32px;
+    line-height: 1.25;
+  }
+
+  @screen xl {
     font-size: 36px;
   }
 }
@@ -45,6 +50,11 @@
   line-height: 1.33333333333;
 
   @screen md {
+    font-size: 32px;
+    line-height: 1.25;
+  }
+
+  @screen xl {
     font-size: 36px;
   }
 }
@@ -52,8 +62,13 @@
 .content {
   @apply font-serif text-blue;
 
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 20px;
+  line-height: 32px;
+
+  @screen xl {
+    font-size: 24px;
+    line-height: 36px;
+  }
 
   p a {
     @apply underline;
@@ -64,7 +79,7 @@
   }
 
   p {
-    @apply mb-6;
+    @apply mb-4;
   }
 
   ul {

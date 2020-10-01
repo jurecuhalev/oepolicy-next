@@ -19,13 +19,13 @@ const ContentBlock: FunctionComponent<Props> = ({
   >
     <div
       className={[
-        noTopPadding === true ? "pt-0 pb-30" : "py-30",
+        noTopPadding === true ? "pt-0 pb-24 xl:pb-30" : "pt-16 pb-24 xl:py-30",
         "container",
         "content",
       ].join(" ")}
     >
       {subtitle && <h2 className="h3">{subtitle}</h2>}
-      {title && <h1 className="h2 mb-15">{title}</h1>}
+      {title && <h1 className="h2 mb-12">{title}</h1>}
       {children}
     </div>
   </div>
