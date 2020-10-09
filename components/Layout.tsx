@@ -96,9 +96,13 @@ const Layout: FunctionComponent<Props> = ({ children, title, hero }) => (
             </li>
 
             <li className="mt-8 font-normal">
-              <Link href="/imprint">
-                <a>Imprint &amp; Privacy</a>
-              </Link>
+              <a
+                href="https://oerworldmap.org/imprint"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Imprint &amp; Privacy
+              </a>
             </li>
           </ul>
         </div>
