@@ -17,7 +17,7 @@ const Layout: FunctionComponent<Props> = ({ children, title, hero }) => (
       <link rel="shortcut icon" href="/favicon.png" />
       <meta property="og:title" content={title} />
       <meta property="og:site_name" content="OE Policy Hub" />
-      <meta property="og:url" content="https://oepolicy.netlify.app/" />
+      <meta property="og:url" content="https://www.oepolicyhub.org/" />
       <meta
         property="og:description"
         content="Shaping Open Futures in Education Together"
@@ -25,7 +25,7 @@ const Layout: FunctionComponent<Props> = ({ children, title, hero }) => (
       <meta property="og:type" content="website" />
       <meta
         property="og:image"
-        content="https://oepolicy.netlify.app/facebook.png"
+        content="https://www.oepolicyhub.org/facebook.png"
       />
     </Head>
     <header className="bg-blue text-lg py-4 text-white">
