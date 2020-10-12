@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import BarChart from "./BarChart";
+import BarChartNivo from "./BarChartNivo";
 import { dataSimple } from "../utils/charts";
 import { countBy, toPairs, sortBy } from "lodash";
 
@@ -26,13 +26,13 @@ const BarChartPoliciesByLevel: FunctionComponent<{ items: any[] }> = ({
   });
 
   const keys = sortedPairs.map(([k, _]) => k);
-  const values = sortedPairs.map(([_, v]) => v);
+  const sortedData = sortedPairs.map(([k, v]) => {
+    return { id: k, label: k, value: v };
+  });
 
   return (
-    <BarChart
-      x={values}
-      y={keys}
-      text={values.map(String)}
+    <BarChartNivo
+      data={sortedData}
       fieldName="filter.about.spatialCoverage"
       title="OE Policies by Level"
       bgColor="gray"
