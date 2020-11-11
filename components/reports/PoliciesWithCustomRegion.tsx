@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 
-const PoliciesWithoutAttribute: FunctionComponent<{
+const PoliciesWithCustomRegion: FunctionComponent<{
   title: string;
   items: any[];
   lookupAttr: (item: any[]) => any;
@@ -39,4 +39,4 @@ const PoliciesWithoutAttribute: FunctionComponent<{
   );
 };
 
-export default PoliciesWithoutAttribute;
+export default PoliciesWithCustomRegion;

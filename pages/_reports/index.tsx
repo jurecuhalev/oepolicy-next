@@ -4,6 +4,7 @@ import useSWR from "swr";
 import fetcher from "../../utils/fetcher";
 import ServicesWithoutLocation from "../../components/reports/ServicesWithoutLocation";
 import PoliciesWithoutAttribute from "../../components/reports/PoliciesWithoutAttribute";
+import PoliciesWithCustomRegion from "../../components/reports/PoliciesWithCustomRegion";
 
 const ReportsPage: FunctionComponent = () => {
   const url =
@@ -53,6 +54,19 @@ const ReportsPage: FunctionComponent = () => {
   const policiesWithoutFocus = (item) => {
     if (!item?.about?.focus) {
       return item;
+    }
+  };
+
+  const policiesWithCustomRegion = (item) => {
+    if (item?.about?.location) {
+      let location = item.about.location[0];
+      if (
+        location?.address?.addressRegion &&
+        !location.address.addressRegion.includes(".")
+      ) {
+        console.log(location.address.addressRegion, item);
+        return item;
+      }
     }
   };
 
@@ -116,6 +130,16 @@ const ReportsPage: FunctionComponent = () => {
             />
           )}
         </div>
+      </div>
+
+      <div className="container content py-30">
+        {data && (
+          <PoliciesWithCustomRegion
+            title="Policies with Custom Region that should be updated"
+            items={data.member}
+            lookupAttr={policiesWithCustomRegion}
+          />
+        )}
       </div>
     </Layout>
   );
