@@ -35,7 +35,7 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [require("tailwindcss-multi-column")()],
+  plugins: [require("@tailwindcss/aspect-ratio")],
   purge: [
     "./pages/**/*.js",
     "./pages/**/*.tsx",

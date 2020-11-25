@@ -9,6 +9,7 @@
     "lint": "eslint . --ext ts --ext tsx --ext js"
   },
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.2.0",
     "babel-plugin-import-glob-array": "^0.2.0",
     "isomorphic-unfetch": "^3.0.0",
     "mapbox-gl": "^1.10.1",
@@ -38,7 +39,6 @@
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-react": "^7.19.0",
     "prettier": "^2.0.5",
-    "tailwindcss-multi-column": "^1.0.2",
     "typescript": "^3.9.2"
   }
 }
