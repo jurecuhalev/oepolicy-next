@@ -1,31 +1,37 @@
 import React, { FunctionComponent } from "react";
-import Layout from "../components/Layout";
+import Layout from "../../components/Layout";
 import useSWR from "swr";
-import fetcher from "../utils/fetcher";
+import fetcher from "../../utils/fetcher";
 
 import IntroPageMd, {
   frontMatter as introPage,
-} from "../docs/201-intro-explore.mdx";
-import TypePageMd, { frontMatter as typePage } from "../docs/203-type.mdx";
+} from "../../docs/201-intro-explore.mdx";
+import TypePageMd, { frontMatter as typePage } from "../../docs/203-type.mdx";
 import PoliciesPageMd, {
   frontMatter as policiesPage,
-} from "../docs/204-policies.mdx";
-import ScopePageMd, { frontMatter as scopePage } from "../docs/205-scope.mdx";
-import LevelPageMd, { frontMatter as levelPage } from "../docs/206-level.mdx";
+} from "../../docs/204-policies.mdx";
+import ScopePageMd, {
+  frontMatter as scopePage,
+} from "../../docs/205-scope.mdx";
+import LevelPageMd, {
+  frontMatter as levelPage,
+} from "../../docs/206-level.mdx";
 import SectorPageMd, {
   frontMatter as sectorPage,
-} from "../docs/207-sector.mdx";
-import FocusPageMd, { frontMatter as focusPage } from "../docs/208-focus.mdx";
+} from "../../docs/207-sector.mdx";
+import FocusPageMd, {
+  frontMatter as focusPage,
+} from "../../docs/208-focus.mdx";
 
-import ContentBlock from "../components/ContentBlock";
+import ContentBlock from "../../components/ContentBlock";
 import dynamic from "next/dynamic";
-import Hero from "../components/Hero";
-import LoaderPie from "../components/LoaderPie";
-import ListingPoliciesByType from "../components/ListingPoliciesRepositories";
+import Hero from "../../components/Hero";
+import LoaderPie from "../../components/LoaderPie";
+import ListingPoliciesByType from "../../components/ListingPoliciesRepositories";
 
 const PieChartPoliciesByFocus = dynamic(
   // @ts-ignore
-  import("../components/PieChart-ByFocus"),
+  import("../../components/PieChart-ByFocus"),
   {
     ssr: false,
   }
@@ -33,7 +39,7 @@ const PieChartPoliciesByFocus = dynamic(
 
 const PieChartPoliciesByType = dynamic(
   // @ts-ignore
-  import("../components/PieChart-ByType"),
+  import("../../components/PieChart-ByType"),
   {
     ssr: false,
   }
@@ -41,7 +47,7 @@ const PieChartPoliciesByType = dynamic(
 
 const BarChartPoliciesByFocus = dynamic(
   // @ts-ignore
-  import("../components/BarChart-ByFocus"),
+  import("../../components/BarChart-ByFocus"),
   {
     ssr: false,
   }
@@ -49,7 +55,7 @@ const BarChartPoliciesByFocus = dynamic(
 
 const BarChartPoliciesByLevel = dynamic(
   // @ts-ignore
-  import("../components/BarChart-ByLevel"),
+  import("../../components/BarChart-ByLevel"),
   {
     ssr: false,
   }
@@ -57,7 +63,7 @@ const BarChartPoliciesByLevel = dynamic(
 
 const BarChartPoliciesBySector = dynamic(
   // @ts-ignore
-  import("../components/BarChart-BySector"),
+  import("../../components/BarChart-BySector"),
   {
     ssr: false,
   }
@@ -65,7 +71,7 @@ const BarChartPoliciesBySector = dynamic(
 
 const BarChartPoliciesByScope = dynamic(
   // @ts-ignore
-  import("../components/BarChart-ByScope"),
+  import("../../components/BarChart-ByScope"),
   {
     ssr: false,
   }
