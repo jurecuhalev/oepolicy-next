@@ -75,14 +75,12 @@ const PieChart: FunctionComponent<{
             size: 16,
             color: "#3E55CD",
           },
-          modebar: {
-            bgcolor: "rgba(255, 255, 255, 0)",
-          },
         }}
         config={{ displaylogo: false, responsive: true }}
         onClick={handleClick}
         onLegendClick={handleLegendClick}
         onLegendDoubleClick={handleLegendClick}
+        displayModeBar={false}
       />
     </div>
   );
