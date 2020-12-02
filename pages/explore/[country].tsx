@@ -2,6 +2,8 @@ import React, { FunctionComponent } from "react";
 import Layout from "../../components/Layout";
 import useSWR from "swr";
 import fetcher from "../../utils/fetcher";
+import { useRouter } from "next/router";
+import countries from "../../json/iso3166-1-alpha-2.json";
 
 import IntroPageMd, {
   frontMatter as introPage,
@@ -77,37 +79,15 @@ const BarChartPoliciesByScope = dynamic(
   }
 );
 
-// const BarChartPoliciesByCountry = dynamic(
-//   // @ts-ignore
-//   import("../../components/BarChart-ByCountry"),
-//   {
-//     ssr: false,
-//   }
-// );
-
-// const BarChartStackedRepository = dynamic(
-//   // @ts-ignore
-//   import("../../components/BarChart-StackedRepository"),
-//   {
-//     ssr: false,
-//   }
-// );
-
-// const MapDisplay = dynamic(
-//   // @ts-ignore
-//   import("../../components/MapDisplay"),
-//   {
-//     ssr: false,
-//   }
-// );
-
 const ExplorePage: FunctionComponent = () => {
-  const url =
-    "https://oerworldmap.org/resource.json?q=about.@type:Policy&sort=dateCreated:DESC&size=500";
+  const router = useRouter();
+  const countryCode = router.query["country"]?.toString()?.toUpperCase();
+  const countryName = countries[countryCode];
 
-  const servicesUrl =
-    "https://oerworldmap.org/resource.json?field=feature.properties.location.address.addressRegion&filter.about.@type=%22Service%22&filter.about.additionalType.@id=%5B%22https%3A%2F%2Foerworldmap.org%2Fassets%2Fjson%2Fservices.json%23referatory%22%2C%22https%3A%2F%2Foerworldmap.org%2Fassets%2Fjson%2Fservices.json%23repository%22%5D&sort=dateCreated:DESC&size=500";
+  const url = `https://oerworldmap.org/resource.json?q=about.@type:Policy&sort=dateCreated:DESC&size=500&filter.feature.properties.location.address.addressCountry=%5B"${countryCode}"%5D`;
+  const servicesUrl = `https://oerworldmap.org/resource.json?field=feature.properties.location.address.addressRegion&filter.about.@type=%22Service%22&filter.about.additionalType.@id=%5B%22https%3A%2F%2Foerworldmap.org%2Fassets%2Fjson%2Fservices.json%23referatory%22%2C%22https%3A%2F%2Foerworldmap.org%2Fassets%2Fjson%2Fservices.json%23repository%22%5D&sort=dateCreated:DESC&size=500&filter.feature.properties.location.address.addressCountry=%5B"${countryCode}"%5D`;
 
+  console.log(url);
   const { data } = useSWR(url, fetcher, {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
@@ -125,16 +105,14 @@ const ExplorePage: FunctionComponent = () => {
         <Hero background="orange">
           <h1 className="text-4xl font-sans">
             Explore our collection of <br className="hidden md:block" />
-            <b>Open Education Policies</b>
+            <b>
+              Open Education Policies in <br />
+              {countryName}
+            </b>
           </h1>
         </Hero>
       }
     >
-      {/*<div className="bg-white">*/}
-      {/*  <div className="containter">*/}
-      {/*    {!data ? <LoaderPie /> : <MapDisplay items={data.member} />}*/}
-      {/*  </div>*/}
-      {/*</div>*/}
       <ContentBlock {...introPage}>
         <IntroPageMd />
       </ContentBlock>
@@ -151,7 +129,8 @@ const ExplorePage: FunctionComponent = () => {
           <ListingPoliciesByType
             items={data.member}
             services={services.member}
-            byRegion={false}
+            byRegion={true}
+            filterCountry={countryCode}
           />
         )}
       </div>
@@ -192,23 +171,6 @@ const ExplorePage: FunctionComponent = () => {
         <SectorPageMd />
       </ContentBlock>
 
-      {/*<div className="bg-gray">*/}
-      {/*  {!data ? (*/}
-      {/*    <LoaderPie />*/}
-      {/*  ) : (*/}
-      {/*    <BarChartPoliciesByCountry items={data.member} />*/}
-      {/*  )}*/}
-      {/*</div>*/}
-      {/*<div className="bg-gray">*/}
-      {/*  {!data || !services ? (*/}
-      {/*    <LoaderPie />*/}
-      {/*  ) : (*/}
-      {/*    <BarChartStackedRepository*/}
-      {/*      items={data.member}*/}
-      {/*      services={services.member}*/}
-      {/*    />*/}
-      {/*  )}*/}
-      {/*</div>*/}
       <div className="bg-white">
         {!data ? (
           <LoaderPie />

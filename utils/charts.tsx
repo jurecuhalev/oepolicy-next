@@ -1,5 +1,6 @@
 import { countBy, uniqBy, uniq, invert } from "lodash";
 import countries from "../json/iso3166-1-alpha-2.json";
+import regions from "../json/iso3166-2.json";
 
 export const urlMapping = (items: any[], field: string): any => {
   return uniqBy(
@@ -59,7 +60,37 @@ export const getCountryFromItem = (item: any): any => {
   }
 };
 
+export const getRegionFromItem = (item: any, filterCountry: string): any => {
+  if (item.feature?.properties?.location?.length) {
+    const locations = item.feature.properties.location;
+    return uniq(
+      locations
+        .filter((loc) => loc.address.addressCountry === filterCountry)
+        .map((loc) => regions[loc.address.addressRegion])
+    );
+  }
+  if (
+    item?.feature?.properties?.location?.address?.addressRegion &&
+    item?.feature?.properties?.location?.address?.addressCountry ===
+      filterCountry
+  ) {
+    return regions[item.feature.properties.location.address.addressRegion];
+  } else if (item.about?.location) {
+    const locations = item.about.location;
+    return uniq(
+      locations
+        .filter((loc) => loc.address.addressCountry === filterCountry)
+        .map((loc) => regions[loc.address.addressRegion])
+    );
+  }
+};
+
 const invertedCountries = invert(countries);
 export const getCountryCodeFromCountry = (key: string): any => {
   return invertedCountries[key];
+};
+
+const invertedRegions = invert(regions);
+export const getRegionCodeFromRegion = (key: string): any => {
+  return invertedRegions[key];
 };

@@ -1,34 +1,60 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { countBy, toPairs, mergeWith, orderBy, fromPairs, map } from "lodash";
-import { getCountryCodeFromCountry, getCountryFromItem } from "../utils/charts";
+import {
+  getCountryCodeFromCountry,
+  getCountryFromItem,
+  getRegionCodeFromRegion,
+  getRegionFromItem,
+} from "../utils/charts";
 import Dropdown from "react-dropdown-now";
 
-const policiesLink = (country: string): string => {
-  const code = getCountryCodeFromCountry(country);
-  return `https://oerworldmap.org/resource/?filter.about.%40type=%22Policy%22&filter.feature.properties.location.address.addressCountry=%5B%22${code}%22%5D`;
+const policiesLink = (name: string, isRegion: boolean): string => {
+  if (isRegion) {
+    const code = getRegionCodeFromRegion(name);
+    return `https://oerworldmap.org/resource/?filter.about.%40type=%22Policy%22&filter.feature.properties.location.address.addressRegion=%5B%22${code}%22%5D`;
+  } else {
+    const code = getCountryCodeFromCountry(name);
+    return `https://oerworldmap.org/resource/?filter.about.%40type=%22Policy%22&filter.feature.properties.location.address.addressCountry=%5B%22${code}%22%5D`;
+  }
 };
 
-const servicesLink = (country: string): string => {
-  const code = getCountryCodeFromCountry(country);
-  return `https://oerworldmap.org/resource/?filter.about.%40type=%22Service%22&filter.about.additionalType.%40id=%5B%22https%3A%2F%2Foerworldmap.org%2Fassets%2Fjson%2Fservices.json%23referatory%22%2C%22https%3A%2F%2Foerworldmap.org%2Fassets%2Fjson%2Fservices.json%23repository%22%5D&filter.feature.properties.location.address.addressCountry=%5B%22${code}%22%5D`;
+const servicesLink = (name: string, isRegion: boolean): string => {
+  if (isRegion) {
+    const code = getRegionCodeFromRegion(name);
+    return `https://oerworldmap.org/resource/?filter.about.%40type=%22Service%22&filter.about.additionalType.%40id=%5B%22https%3A%2F%2Foerworldmap.org%2Fassets%2Fjson%2Fservices.json%23referatory%22%2C%22https%3A%2F%2Foerworldmap.org%2Fassets%2Fjson%2Fservices.json%23repository%22%5D&filter.feature.properties.location.address.addressRegion=%5B%22${code}%22%5D`;
+  }
+  {
+    const code = getCountryCodeFromCountry(name);
+    return `https://oerworldmap.org/resource/?filter.about.%40type=%22Service%22&filter.about.additionalType.%40id=%5B%22https%3A%2F%2Foerworldmap.org%2Fassets%2Fjson%2Fservices.json%23referatory%22%2C%22https%3A%2F%2Foerworldmap.org%2Fassets%2Fjson%2Fservices.json%23repository%22%5D&filter.feature.properties.location.address.addressCountry=%5B%22${code}%22%5D`;
+  }
 };
 
 const ListingPoliciesByType: FunctionComponent<{
   items: any[];
   services: any[];
-}> = ({ items, services }) => {
-  const dropdownOptions = ["Country", "Policies", "Repositories"];
+  byRegion: boolean;
+  filterCountry?: string;
+}> = ({ items, services, byRegion = false, filterCountry }) => {
+  const dropdownOptions = [
+    byRegion ? "Region" : "Country",
+    "Policies",
+    "Repositories",
+  ];
 
   const servicesData = countBy(
     services.flatMap((item) => {
-      return getCountryFromItem(item);
+      return byRegion
+        ? getRegionFromItem(item, filterCountry)
+        : getCountryFromItem(item);
     })
   );
   delete servicesData.undefined;
 
   const data = countBy(
     items.flatMap((item) => {
-      return getCountryFromItem(item);
+      return byRegion
+        ? getRegionFromItem(item, filterCountry)
+        : getCountryFromItem(item);
     })
   );
   delete data.undefined;
@@ -124,6 +150,7 @@ const ListingPoliciesByType: FunctionComponent<{
             <StatsItem
               key={name}
               name={name}
+              isRegion={byRegion}
               policies={policies}
               services={services}
             ></StatsItem>
@@ -135,14 +162,15 @@ const ListingPoliciesByType: FunctionComponent<{
 
 const StatsItem: FunctionComponent<{
   name: string;
+  isRegion: boolean;
   policies?: number;
   services?: number;
-}> = ({ name, policies, services }) => (
+}> = ({ name, policies, services, isRegion = false }) => (
   <li className="flex-inline items-center">
     <div className="flex">
       {policies ? (
         <a
-          href={policiesLink(name)}
+          href={policiesLink(name, isRegion)}
           className="sortable-stats__number bg-blue"
           target="_blank"
           rel="noopener"
@@ -154,7 +182,7 @@ const StatsItem: FunctionComponent<{
       )}
       {services ? (
         <a
-          href={servicesLink(name)}
+          href={servicesLink(name, isRegion)}
           className="sortable-stats__number bg-orange"
           target="_blank"
           rel="noopener"
